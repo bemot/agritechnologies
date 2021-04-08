@@ -1,3 +1,3 @@
-# DjangoReactTodo
-Build a simple CRUD Todo app with Django, React and Semantic UI
+# DjangoReactAgritechnologies
+Agritechnologies with Django, React, Reduct, Semantic UI
 # agritechnologies
