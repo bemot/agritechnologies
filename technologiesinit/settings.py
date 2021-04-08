@@ -1,5 +1,5 @@
 """
-Django settings for technologiescrud project.
+Django settings for technologiesinit project.
 """
 
 import os
@@ -46,7 +46,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'technologiescrud.urls'
+ROOT_URLCONF = 'technologiesinit.urls'
 
 TEMPLATES = [
     {
@@ -64,7 +64,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'technologiescrud.wsgi.application'
+WSGI_APPLICATION = 'technologiesinit.wsgi.application'
 
 
 # Database
