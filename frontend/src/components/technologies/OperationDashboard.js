@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import OperationCreate from "./OperationCreate";
 import OperationList from "./OperationList";
 
-class Dashboard extends Component {
+class OperationDashboard extends Component {
   render() {
     return (
       <div className="ui container">
@@ -13,4 +13,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default OperationDashboard;

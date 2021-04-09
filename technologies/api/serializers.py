@@ -8,7 +8,7 @@ from technologies.models import Technologie
 class OperationSerializer(serializers.ModelSerializer):
   class Meta:
     model = Operation
-    fields = ('id', 'title', 'technologie_id','description', 'created_at','completed')
+    fields = ('id', 'title', 'technologie_id','description', 'created_at','activated', 'completed')
 
 class TechnologieSerializer(serializers.ModelSerializer):
   class Meta:

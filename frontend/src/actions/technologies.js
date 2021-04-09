@@ -34,7 +34,7 @@ export const addTechnologie = (formValues) => async (dispatch) => {
     type: ADD_TECHNOLOGIE,
     payload: res.data,
   });
-  dispatch(reset("technlogieForm")); // フォーム送信後、値をクリアする
+  dispatch(reset("TechnologieForm")); // フォーム送信後、値をクリアする
 };
 
 // DELETE TECHNOLOGIE

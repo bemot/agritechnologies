@@ -1,5 +1,5 @@
 """
-WSGI config for todocrud project.
+WSGI config for technologiesinit project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
