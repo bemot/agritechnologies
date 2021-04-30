@@ -4,11 +4,13 @@ import { connect } from "react-redux";
 
 class Header extends Component {
   state = { activeItem: "technologies" };
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name });
+    onWidosykSelect = this.props.onWidosykSelect(name);
+  };
   render() {
     const { activeItem } = this.state;
-    console.log(activeItem);
+    //console.log(this.myname);
     return (
       <Menu>
         <Menu.Item
