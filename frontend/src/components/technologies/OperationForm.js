@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { getTechnologies } from "../../actions/technologies";
 
 class OperationForm extends Component {
   renderField = ({ input, label, meta: { touched, error } }) => {
@@ -19,6 +21,7 @@ class OperationForm extends Component {
   };
 
   render() {
+    console.log(this.props.technologies);
     const btnText = `${this.props.initialValues ? "Update" : "Add"}`;
     return (
       <div className="ui segment">
@@ -26,28 +29,31 @@ class OperationForm extends Component {
           onSubmit={this.props.handleSubmit(this.onSubmit)}
           className="ui form error"
         >
-          <Field
-            name="technologie_id"
-            component={this.renderField}
-            label="Технологія"
-          />
+          <Field name="technologie_id" component="select" label="Technologie">
+            {this.props.technologies.map((tech) => (
+              <option key={tech.id} value={tech.id}>
+                {tech.title}
+              </option>
+            ))}
+          </Field>
+
           <Field name="title" component={this.renderField} label="Title" />
           <Field
             name="description"
             component={this.renderField}
             label="Description"
           />
-          <Field
-            name="activated"
-            component={this.renderField}
-            label="Activated"
-          />
-          <Field
-            name="completed"
-            component={this.renderField}
-            label="Completed"
-          />
 
+          <Field name="activated" component="select" label="Activated">
+            <option value={false}>Не активовано</option>
+            <option value={true}>Активовано</option>
+          </Field>
+          <br />
+          <Field name="completed" component="select" label="Completed">
+            <option value={false}>Не завершено</option>
+            <option value={true}>Завершено</option>
+          </Field>
+          <br />
           <button className="ui primary button">{btnText}</button>
         </form>
       </div>
@@ -65,8 +71,14 @@ const validate = (formValues) => {
   return errors;
 };
 
-export default reduxForm({
-  form: "operationForm",
-  touchOnBlur: false,
-  validate,
-})(OperationForm);
+const mapStateToProps = (state) => ({
+  technologies: Object.values(state.technologies),
+});
+
+export default connect(mapStateToProps, { getTechnologies })(
+  reduxForm({
+    form: "operationForm",
+    touchOnBlur: false,
+    validate,
+  })(OperationForm)
+);
