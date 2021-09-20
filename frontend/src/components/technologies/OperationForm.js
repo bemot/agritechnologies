@@ -16,6 +16,10 @@ class OperationForm extends Component {
     );
   };
 
+  componentDidMount() {
+    this.props.getTechnologies();
+  }
+
   onSubmit = (formValues) => {
     this.props.onSubmit(formValues);
   };

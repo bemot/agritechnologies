@@ -44,7 +44,7 @@ export const deleteOperation = (id) => async (dispatch) => {
     type: DELETE_OPERATION,
     payload: id,
   });
-  history.push("/");
+  history.push("/operations");
 };
 
 // EDIT OPERATION
@@ -54,5 +54,5 @@ export const editOperation = (id, formValues) => async (dispatch) => {
     type: EDIT_OPERATION,
     payload: res.data,
   });
-  history.push("/");
+  history.push("/operations");
 };

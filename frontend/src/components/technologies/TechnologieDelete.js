@@ -27,7 +27,7 @@ class TechnologieDelete extends Component {
         >
           Delete
         </button>
-        <Link to="/" className="ui button">
+        <Link to="/technologies" className="ui button">
           Cancel
         </Link>
       </Fragment>

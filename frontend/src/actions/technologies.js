@@ -44,7 +44,7 @@ export const deleteTechnologie = (id) => async (dispatch) => {
     type: DELETE_TECHNOLOGIE,
     payload: id,
   });
-  history.push("/");
+  history.push("/technologies");
 };
 
 // EDIT TECHNOLOGIE
@@ -54,5 +54,5 @@ export const editTechnologie = (id, formValues) => async (dispatch) => {
     type: EDIT_TECHNOLOGIE,
     payload: res.data,
   });
-  history.push("/");
+  history.push("/technologies");
 };

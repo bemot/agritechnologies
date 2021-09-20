@@ -27,7 +27,7 @@ class OperationDelete extends Component {
         >
           Delete
         </button>
-        <Link to="/" className="ui button">
+        <Link to="/operations" className="ui button">
           Cancel
         </Link>
       </Fragment>
@@ -40,7 +40,7 @@ class OperationDelete extends Component {
         title="Delete Operation"
         content={this.renderContent()}
         actions={this.renderActions()}
-        onDismiss={() => history.push("/")}
+        onDismiss={() => history.push("/operations")}
       />
     );
   }

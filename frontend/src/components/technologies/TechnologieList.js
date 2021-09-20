@@ -15,7 +15,7 @@ class TechnologieList extends Component {
           <div className="item" key={technologie.id}>
             <div className="right floated content">
               <Link
-                to={`/delete/${technologie.id}`}
+                to={`/technologies/delete/${technologie.id}`}
                 className="small ui negative basic button"
               >
                 Delete
@@ -23,7 +23,10 @@ class TechnologieList extends Component {
             </div>
             <i className="large calendar outline middle aligned icon" />
             <div className="content">
-              <Link to={`/edit/${technologie.id}`} className="header">
+              <Link
+                to={`/technologies/edit/${technologie.id}`}
+                className="header"
+              >
                 {technologie.title}
               </Link>
               <div className="description">{technologie.description}</div>

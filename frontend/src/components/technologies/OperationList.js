@@ -15,7 +15,7 @@ class OperationList extends Component {
           <div className="item" key={operation.id}>
             <div className="right floated content">
               <Link
-                to={`/delete/${operation.id}`}
+                to={`/operations/delete/${operation.id}`}
                 className="small ui negative basic button"
               >
                 Delete
@@ -23,7 +23,7 @@ class OperationList extends Component {
             </div>
             <i className="large calendar outline middle aligned icon" />
             <div className="content">
-              <Link to={`/edit/${operation.id}`} className="header">
+              <Link to={`/operations/edit/${operation.id}`} className="header">
                 {operation.title}
               </Link>
               <div className="description">{operation.description}</div>
