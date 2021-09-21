@@ -8,7 +8,7 @@ class Header extends Component {
           Моделювання технологій
         </a>
         <a className="item" href="/technologies">
-          Технологійї
+          Технології
         </a>
         <a className="item" href="/operations">
           Операції

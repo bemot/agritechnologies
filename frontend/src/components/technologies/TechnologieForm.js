@@ -14,6 +14,19 @@ class TechnologieForm extends Component {
     );
   };
 
+  renderTextArea = ({ input, label, meta: { touched, error } }) => {
+    //console.log(input);
+    return (
+      <div className={`texarea ${touched && error ? "error" : ""}`}>
+        <label>{label}</label>
+        <textarea rows="3" {...input} autoComplete="off" />
+        {touched && error && (
+          <span className="ui pointing red basic label">{error}</span>
+        )}
+      </div>
+    );
+  };
+
   onSubmit = (formValues) => {
     this.props.onSubmit(formValues);
   };
@@ -29,7 +42,7 @@ class TechnologieForm extends Component {
           <Field name="title" component={this.renderField} label="Title" />
           <Field
             name="description"
-            component={this.renderField}
+            component={this.renderTextArea}
             label="Description"
           />
           <button className="ui primary button">{btnText}</button>
@@ -43,7 +56,10 @@ const validate = (formValues) => {
   const errors = {};
 
   if (!formValues.title) {
-    errors.title = "Please enter at least 1 character";
+    errors.title = "Please enter title";
+  }
+  if (!formValues.description) {
+    errors.description = "Please enter description";
   }
 
   return errors;
