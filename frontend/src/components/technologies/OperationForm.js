@@ -16,6 +16,19 @@ class OperationForm extends Component {
     );
   };
 
+  renderTextArea = ({ input, label, meta: { touched, error } }) => {
+    //console.log(input);
+    return (
+      <div className={`textarea ${touched && error ? "error" : ""}`}>
+        <label>{label}</label>
+        <textarea rows="3" {...input} autoComplete="off" />
+        {touched && error && (
+          <span className="ui pointing red basic label">{error}</span>
+        )}
+      </div>
+    );
+  };
+
   componentDidMount() {
     this.props.getTechnologies();
   }
@@ -44,7 +57,7 @@ class OperationForm extends Component {
           <Field name="title" component={this.renderField} label="Title" />
           <Field
             name="description"
-            component={this.renderField}
+            component={this.renderTextArea}
             label="Description"
           />
 
@@ -69,7 +82,10 @@ const validate = (formValues) => {
   const errors = {};
 
   if (!formValues.title) {
-    errors.title = "Please enter at least 1 character";
+    errors.title = "Введіть назву операції";
+  }
+  if (!formValues.description) {
+    errors.description = "Надайте короткий опис операції";
   }
 
   return errors;

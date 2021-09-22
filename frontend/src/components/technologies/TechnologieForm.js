@@ -17,7 +17,7 @@ class TechnologieForm extends Component {
   renderTextArea = ({ input, label, meta: { touched, error } }) => {
     //console.log(input);
     return (
-      <div className={`texarea ${touched && error ? "error" : ""}`}>
+      <div className={`textarea ${touched && error ? "error" : ""}`}>
         <label>{label}</label>
         <textarea rows="3" {...input} autoComplete="off" />
         {touched && error && (
@@ -56,10 +56,10 @@ const validate = (formValues) => {
   const errors = {};
 
   if (!formValues.title) {
-    errors.title = "Please enter title";
+    errors.title = "Введіть назву технології вирощування";
   }
   if (!formValues.description) {
-    errors.description = "Please enter description";
+    errors.description = "Надайте опис технології";
   }
 
   return errors;

@@ -7,7 +7,7 @@ import TechnologieForm from "./TechnologieForm";
 class TechnologieEdit extends Component {
   componentDidMount() {
     this.props.getTechnologie(this.props.match.params.id);
-    console.log(this.props.getTechnologie(this.props.match.params.id));
+    //console.log(this.props.getTechnologie(this.props.match.params.id));
   }
 
   onSubmit = (formValues) => {
