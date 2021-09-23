@@ -16,6 +16,10 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
+    # Add parent folder to path so that we can import Photologue itself.
+    PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
+    sys.path.append(os.path.join(PROJECT_PATH, ".."))
+
 
 if __name__ == '__main__':
     main()

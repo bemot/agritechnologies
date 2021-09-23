@@ -3,7 +3,7 @@ Django settings for technologiesinit project.
 """
 
 import os
-
+import sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -17,7 +17,7 @@ SECRET_KEY = 'ame^!skljy&q!ek7)%*h+6c6v@cfm)z-20+mrt$=*51b5m0l2@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -31,8 +31,12 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # ...other installed applications...
+    'photologue',
+    'sortedm2m',
 ]
 
 MIDDLEWARE = [
@@ -48,10 +52,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'technologiesinit.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'technologies/templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -59,10 +64,16 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
             ],
+            'debug': True,
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'technologiesinit.wsgi.application'
 
@@ -114,8 +125,76 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'public', 'static')
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public', 'media')
+MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'technologies/static'),
+)
+
+SITE_ID = 1
+
+# LOGGING CONFIGURATION
+# A logging configuration that writes log messages to the console.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    # Formatting of messages.
+    'formatters': {
+        # Don't need to show the time when logging to console.
+        'console': {
+            'format': '%(levelname)s %(name)s.%(funcName)s (%(lineno)d) %(message)s'
+        }
+    },
+    # The handlers decide what we should do with a logging message - do we email
+    # it, ditch it, or write it to a file?
+    'handlers': {
+        # Writing to console. Use only in dev.
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'console'
+        },
+        # Send logs to /dev/null.
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler',
+        },
+    },
+    # Loggers decide what is logged.
+    'loggers': {
+        '': {
+            # Default (suitable for dev) is to log to console.
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'photologue': {
+            # Default (suitable for dev) is to log to console.
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        # logging of SQL statements. Default is to ditch them (send them to
+        # null). Note that this logger only works if DEBUG = True.
+        'django.db.backends': {
+            'handlers': ['null'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    }
+}
+
+# Don't display logging messages to console during unit test runs.
+if len(sys.argv) > 1 and sys.argv[1] == 'test':
+    LOGGING['loggers']['']['handlers'] = ['null']
+    LOGGING['loggers']['photologue']['handlers'] = ['null']
+
+# Uncomment this for Amazon S3 file storage
+# from example_storages.settings_s3boto import *
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -130,3 +209,4 @@ CORS_ORIGIN_WHITELIST = (
     'http://127.0.0:3000',
     'http://127.0.0:8000'
  )
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

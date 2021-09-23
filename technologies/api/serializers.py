@@ -4,7 +4,8 @@
 from rest_framework import serializers
 from technologies.models import Operation
 from technologies.models import Technologie
-      
+from photologue.models import Gallery
+
 class OperationSerializer(serializers.ModelSerializer):
   class Meta:
     model = Operation
@@ -15,4 +16,9 @@ class TechnologieSerializer(serializers.ModelSerializer):
     model = Technologie
     fields = ('id', 'title', 'description', 'created_at')
 
-   
+class GallerySerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Gallery
+    fields = ('title', 'slug', 'photos')
+
+
