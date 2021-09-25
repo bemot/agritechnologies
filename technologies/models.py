@@ -15,7 +15,7 @@ class Operation(models.Model):
   technologie_id = models.ForeignKey(Technologie, on_delete=models.CASCADE)
   created_at = models.DateTimeField(auto_now_add=True)
   description = models.TextField()
-  activated = models.BooleanField(default=True)
+  activated = models.BooleanField(default=False)
   completed = models.BooleanField(default=False)
 
   def __str__(self):

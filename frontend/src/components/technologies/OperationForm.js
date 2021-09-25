@@ -46,7 +46,9 @@ class OperationForm extends Component {
           onSubmit={this.props.handleSubmit(this.onSubmit)}
           className="ui form error"
         >
+          <label>Technologie</label>
           <Field name="technologie_id" component="select" label="Technologie">
+            <option></option>
             {this.props.technologies.map((tech) => (
               <option key={tech.id} value={tech.id}>
                 {tech.title}
@@ -60,7 +62,7 @@ class OperationForm extends Component {
             component={this.renderTextArea}
             label="Description"
           />
-
+          <br />
           <Field name="activated" component="select" label="Activated">
             <option value={false}>Не активовано</option>
             <option value={true}>Активовано</option>

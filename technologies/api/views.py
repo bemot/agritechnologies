@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from .serializers import TechnologieSerializer
 from .serializers import OperationSerializer
 from .serializers import GallerySerializer
-
+from .serializers import PhotoSerializer
 
 from technologies.models import Technologie
 from technologies.models import Operation
@@ -20,5 +20,10 @@ class OperationViewSet(viewsets.ModelViewSet):
 class GalleryViewSet(viewsets.ModelViewSet):
     queryset = Gallery.objects.all()
     serializer_class = GallerySerializer
+
+
+class PhotoViewSet(viewsets.ModelViewSet):
+    queryset = Photo.objects.all()
+    serializer_class = PhotoSerializer
 
 
