@@ -14,15 +14,13 @@ class TechnologieDelete extends Component {
   }
 
   areTechnologieUsed(tech_id) {
-    //console.log("tech_id", tech_id);
-    _.find(this.props.operarations, function (o) {
-      return o.technologie_id === tech_id;
-    });
+    //console.log(this.props.operations);
+    let res = _.find(this.props.operations, { technologie_id: tech_id });
+    return { res };
   }
-  renderContent() {
-    // console.log(this.props.technologie.id);
-    console.log(this.areTechnologieUsed(this.props.technologie.id));
 
+  renderContent() {
+    console.log(this.areTechnologieUsed(this.props.technologie.id));
     if (!this.props.technologie) {
       return "Are you sure you want to delete this technologie, my dear?";
     }
