@@ -7,7 +7,7 @@ import OperationForm from "./OperationForm";
 class OperationEdit extends Component {
   componentDidMount() {
     this.props.getOperation(this.props.match.params.id);
-    console.log(this.props.getOperation(this.props.match.params.id));
+    //console.log(this.props.getOperation(this.props.match.params.id));
   }
 
   onSubmit = (formValues) => {
