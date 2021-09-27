@@ -1,6 +1,41 @@
-pytz>=2013.9
-# The following is only required if developing for Photologue.
-factory-boy>=2.9.2
-# The following is only required if you plan on using Amazon AWS S3
-# -r example_storages/s3_requirements.txt
-
+attrs==20.3.0
+beautifulsoup4==4.6.0
+bitchute-dl==1.0.6
+certifi==2021.5.30
+chardet==3.0.4
+Django==2.0.8
+django-filter==2.0.0
+django-modelcluster==4.2
+django-taggit==0.23.0
+django-treebeard==4.3
+django-webpack-loader==0.6.0
+djangorestframework==3.8.2
+djangorestframework-jwt==1.11.0
+docopt==0.6.2
+draftjs-exporter==2.1.2
+html5lib==1.0.1
+idna==2.7
+key-mon==1.16
+lxml==4.6.3
+Markdown==2.6.11
+Pillow==5.2.0
+psutil==5.7.3
+pycairo==1.20.0
+PyGObject==3.38.0
+PyJWT==1.6.4
+python-decouple==3.1
+python-xlib==0.29
+pytz==2018.5
+react-ssr==0.1.8
+requests==2.20.0
+screenkey==1.4
+six==1.11.0
+solc-select==0.2.1
+Unidecode==1.0.22
+urllib3==1.23
+wagtail==2.3
+webencodings==0.5.1
+whitenoise==4.1
+Willow==1.1
+youtube-dl==2021.4.1
+photologue
