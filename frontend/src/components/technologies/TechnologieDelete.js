@@ -13,18 +13,11 @@ class TechnologieDelete extends Component {
     this.props.getOperations();
   }
 
-  areTechnologieUsed(tech_id) {
-    //console.log(this.props.operations);
-    let res = _.find(this.props.operations, { technologie_id: tech_id });
-    return { res };
-  }
-
   renderContent() {
-    console.log(this.areTechnologieUsed(this.props.technologie.id));
     if (!this.props.technologie) {
       return "Are you sure you want to delete this technologie, my dear?";
     }
-    return `Are you sure you want to delete the technologie: ${this.props.technologie.title}`;
+    return `Are you sure you want to delete the technologie ( all operations will be deleted also!!! ): ${this.props.technologie.title}`;
   }
 
   renderActions() {
