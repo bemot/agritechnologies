@@ -3,18 +3,18 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Modal from "../../layout/Modal";
 import history from "../../../history";
-import { getOperation, deleteOperation } from "../../../actions/operations";
+import { getVariable, deleteVariable } from "../../../actions/variables";
 
-class OperationDelete extends Component {
+class VariableDelete extends Component {
   componentDidMount() {
-    this.props.getOperation(this.props.match.params.id);
+    this.props.getVariable(this.props.match.params.id);
   }
 
   renderContent() {
-    if (!this.props.operation) {
-      return "Are you sure you want to delete this operation, my dear?";
+    if (!this.props.variable) {
+      return "Are you sure you want to delete this variable, my dear?";
     }
-    return `Are you sure you want to delete the operation: ${this.props.operation.title}`;
+    return `Are you sure you want to delete the variable ( all variables will be deleted also!!! ): ${this.props.variable.title}`;
   }
 
   renderActions() {
@@ -22,12 +22,12 @@ class OperationDelete extends Component {
     return (
       <Fragment>
         <button
-          onClick={() => this.props.deleteOperation(id)}
+          onClick={() => this.props.deleteVariable(id)}
           className="ui negative button"
         >
           Delete
         </button>
-        <Link to="/operations" className="ui button">
+        <Link to="/variables" className="ui button">
           Cancel
         </Link>
       </Fragment>
@@ -37,19 +37,20 @@ class OperationDelete extends Component {
   render() {
     return (
       <Modal
-        title="Delete Operation"
+        title="Delete Variable"
         content={this.renderContent()}
         actions={this.renderActions()}
-        onDismiss={() => history.push("/operations")}
+        onDismiss={() => history.push("/")}
       />
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  operation: state.operations[ownProps.match.params.id],
+  variable: state.variables[ownProps.match.params.id],
 });
 
-export default connect(mapStateToProps, { getOperation, deleteOperation })(
-  OperationDelete
-);
+export default connect(mapStateToProps, {
+  getVariable,
+  deleteVariable,
+})(VariableDelete);

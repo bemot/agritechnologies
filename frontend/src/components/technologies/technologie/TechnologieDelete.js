@@ -8,7 +8,6 @@ import {
   deleteTechnologie,
 } from "../../../actions/technologies";
 import { getOperations, getOperation } from "../../../actions/operations";
-import _ from "lodash";
 
 class TechnologieDelete extends Component {
   componentDidMount() {

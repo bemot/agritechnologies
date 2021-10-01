@@ -9,6 +9,7 @@ class Header extends Component {
         <Menu.Item href="/">IAE</Menu.Item>
         <Menu.Item name="Технології" href="/technologies" />
         <Menu.Item name="Операції" href="/operations" />
+        <Menu.Item name="Змінні" href="/variables" />
         <Dropdown item text="Техніка">
           <Dropdown.Menu>
             <Dropdown.Item text="Енергозасоби" href="/technics" />

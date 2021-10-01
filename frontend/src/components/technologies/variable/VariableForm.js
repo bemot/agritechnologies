@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
-import { connect } from "react-redux";
-import { getTechnologies } from "../../../actions/technologies";
 
-class OperationForm extends Component {
+class VariableForm extends Component {
   renderField = ({ input, label, meta: { touched, error } }) => {
     return (
       <div className={`field ${touched && error ? "error" : ""}`}>
@@ -29,16 +27,11 @@ class OperationForm extends Component {
     );
   };
 
-  componentDidMount() {
-    this.props.getTechnologies();
-  }
-
   onSubmit = (formValues) => {
     this.props.onSubmit(formValues);
   };
 
   render() {
-    console.log(this.props.technologies);
     const btnText = `${this.props.initialValues ? "Update" : "Add"}`;
     return (
       <div className="ui segment">
@@ -46,33 +39,23 @@ class OperationForm extends Component {
           onSubmit={this.props.handleSubmit(this.onSubmit)}
           className="ui form error"
         >
-          <label>Technologie</label>
-          <Field name="technologie_id" component="select" label="Technologie">
-            <option></option>
-            {this.props.technologies.map((tech) => (
-              <option key={tech.id} value={tech.id}>
-                {tech.title}
-              </option>
-            ))}
-          </Field>
-
           <Field name="title" component={this.renderField} label="Title" />
           <Field
             name="description"
             component={this.renderTextArea}
             label="Description"
           />
-          <br />
+          <Field name="value" component={this.renderField} label="Value" />
+          <Field
+            name="od_vymiru"
+            component={this.renderField}
+            label="Одиниця Виміру"
+          />
           <Field name="activated" component="select" label="Activated">
             <option value={false}>Не активовано</option>
             <option value={true}>Активовано</option>
           </Field>
-          <br />
-          <Field name="completed" component="select" label="Completed">
-            <option value={false}>Не завершено</option>
-            <option value={true}>Завершено</option>
-          </Field>
-          <br />
+
           <button className="ui primary button">{btnText}</button>
         </form>
       </div>
@@ -84,23 +67,17 @@ const validate = (formValues) => {
   const errors = {};
 
   if (!formValues.title) {
-    errors.title = "Введіть назву операції";
+    errors.title = "Введіть назву змінної";
   }
   if (!formValues.description) {
-    errors.description = "Надайте короткий опис операції";
+    errors.description = "Надайте опис змінної";
   }
 
   return errors;
 };
 
-const mapStateToProps = (state) => ({
-  technologies: Object.values(state.technologies),
-});
-
-export default connect(mapStateToProps, { getTechnologies })(
-  reduxForm({
-    form: "operationForm",
-    touchOnBlur: false,
-    validate,
-  })(OperationForm)
-);
+export default reduxForm({
+  form: "variableForm",
+  touchOnBlur: false,
+  validate,
+})(VariableForm);

@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getOperations, deleteOperation } from "../../../actions/operations";
+import { getVariables, deleteVariable } from "../../../actions/variables";
 
-class OperationList extends Component {
+class VariableList extends Component {
   componentDidMount() {
-    this.props.getOperations();
+    this.props.getVariables();
   }
 
   render() {
     return (
       <div className="ui relaxed divided list" style={{ marginTop: "2rem" }}>
-        {this.props.operations.map((operation) => (
-          <div className="item" key={operation.id}>
+        {this.props.variables.map((variable) => (
+          <div className="item" key={variable.id}>
             <div className="right floated content">
               <Link
-                to={`/operations/delete/${operation.id}`}
+                to={`/variables/delete/${variable.id}`}
                 className="small ui negative basic button"
               >
                 Delete
@@ -23,10 +23,10 @@ class OperationList extends Component {
             </div>
             <i className="large calendar outline middle aligned icon" />
             <div className="content">
-              <Link to={`/operations/edit/${operation.id}`} className="header">
-                {operation.title}
+              <Link to={`/variables/edit/${variable.id}`} className="header">
+                {variable.title}
               </Link>
-              <div className="description">{operation.description}</div>
+              <div className="description">{variable.description}</div>
             </div>
           </div>
         ))}
@@ -36,9 +36,9 @@ class OperationList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  operations: Object.values(state.operations),
+  variables: Object.values(state.variables),
 });
 
-export default connect(mapStateToProps, { getOperations, deleteOperation })(
-  OperationList
+export default connect(mapStateToProps, { getVariables, deleteVariable })(
+  VariableList
 );

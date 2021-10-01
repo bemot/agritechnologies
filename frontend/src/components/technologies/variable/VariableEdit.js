@@ -1,34 +1,34 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getOperation, editOperation } from "../../../actions/operations"; // bobik remember about actions
-import OperationForm from "./OperationForm";
+import { getVariable, editVariable } from "../../../actions/variables";
+import VariableForm from "./VariableForm";
 
-class OperationEdit extends Component {
+class VariableEdit extends Component {
   componentDidMount() {
-    this.props.getOperation(this.props.match.params.id);
-    //console.log(this.props.getOperation(this.props.match.params.id));
+    this.props.getVariable(this.props.match.params.id);
+    //console.log(this.props.getVariable(this.props.match.params.id));
   }
 
   onSubmit = (formValues) => {
-    this.props.editOperation(this.props.match.params.id, formValues);
+    this.props.editVariable(this.props.match.params.id, formValues);
   };
 
   render() {
-    if (!this.props.operation) {
+    if (!this.props.variable) {
       return <div>Loading...</div>;
     }
     return (
       <div className="ui container">
-        <h2 style={{ marginTop: "2rem" }}>Edit Operation</h2>
-        <OperationForm
+        <h2 style={{ marginTop: "2rem" }}>Edit Variable</h2>
+        <VariableForm
           initialValues={_.pick(
-            this.props.operation,
-            "technologie_id",
+            this.props.variable,
             "title",
             "description",
-            "activated",
-            "completed"
+            "value",
+            "od_vymiru",
+            "activated"
           )}
           enableReinitialize={true}
           onSubmit={this.onSubmit}
@@ -39,9 +39,9 @@ class OperationEdit extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  operation: state.operations[ownProps.match.params.id],
+  variable: state.variables[ownProps.match.params.id],
 });
 
-export default connect(mapStateToProps, { getOperation, editOperation })(
-  OperationEdit
+export default connect(mapStateToProps, { getVariable, editVariable })(
+  VariableEdit
 );

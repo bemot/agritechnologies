@@ -4,12 +4,19 @@ import { Router, Route, Switch } from "react-router-dom";
 
 import history from "../history";
 import Header from "./layout/Header";
+
 import OperationDelete from "./technologies/operation/OperationDelete";
 import OperationEdit from "./technologies/operation/OperationEdit";
 import OperationDashboard from "./technologies/operation/OperationDashboard";
+
 import TechnologieDelete from "./technologies/technologie/TechnologieDelete";
 import TechnologieEdit from "./technologies/technologie/TechnologieEdit";
 import TechnologieDashboard from "./technologies/technologie/TechnologieDashboard";
+
+import VariableDelete from "./technologies/variable/VariableDelete";
+import VariableEdit from "./technologies/variable/VariableEdit";
+import VariableDashboard from "./technologies/variable/VariableDashboard";
+
 import MainPage from "./technologies/MainPage";
 
 import { Provider } from "react-redux";
@@ -50,6 +57,13 @@ class App extends Component {
               path="/technologies/edit/:id"
               component={TechnologieEdit}
             />
+            <Route exact path="/variables" component={VariableDashboard} />
+            <Route
+              exact
+              path="/variables/delete/:id"
+              component={VariableDelete}
+            />
+            <Route exact path="/variables/edit/:id" component={VariableEdit} />
           </Switch>
         </Router>
       </Provider>

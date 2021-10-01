@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addOperation } from "../../../actions/operations";
-import OperationForm from "./OperationForm";
+import { addVariable } from "../../../actions/variables";
+import VariableForm from "./VariableForm";
 
-class OperationCreate extends Component {
+class VariableCreate extends Component {
   onSubmit = (formValues) => {
-    this.props.addOperation(formValues);
+    this.props.addVariable(formValues);
   };
 
   render() {
     return (
       <div style={{ marginTop: "2rem" }}>
-        <OperationForm destroyOnUnmount={false} onSubmit={this.onSubmit} />
+        <VariableForm destroyOnUnmount={false} onSubmit={this.onSubmit} />
       </div>
     );
   }
 }
 
-export default connect(null, { addOperation })(OperationCreate);
+export default connect(null, { addVariable })(VariableCreate);

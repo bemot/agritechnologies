@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import OperationCreate from "./OperationCreate";
-import OperationList from "./OperationList";
+import VariableCreate from "./VariableCreate";
+import VariableList from "./VariableList";
 
-class OperationDashboard extends Component {
+class VariableDashboard extends Component {
   render() {
     return (
       <div className="ui container">
-        <OperationCreate />
-        <OperationList />
+        <VariableCreate />
+        <VariableList />
       </div>
     );
   }
 }
 
-export default OperationDashboard;
+export default VariableDashboard;

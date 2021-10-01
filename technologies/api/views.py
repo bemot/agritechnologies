@@ -4,9 +4,12 @@ from .serializers import TechnologieSerializer
 from .serializers import OperationSerializer
 from .serializers import GallerySerializer
 from .serializers import PhotoSerializer
+from .serializers import VariableSerializer
 
 from technologies.models import Technologie
 from technologies.models import Operation
+from technologies.models import Variable
+
 from photologue.models import Gallery, Photo
 
 class TechnologieViewSet(viewsets.ModelViewSet):
@@ -26,4 +29,7 @@ class PhotoViewSet(viewsets.ModelViewSet):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
 
+class VariableViewSet(viewsets.ModelViewSet):
+    queryset = Variable.objects.all()
+    serializer_class = VariableSerializer
 
