@@ -9,7 +9,7 @@ class Technologie(models.Model):
 
     def __str__(self):
         return self.title
-# add todo
+# add operation
 class Operation(models.Model):
   title = models.CharField(max_length=255)
   technologie_id = models.ForeignKey(Technologie, on_delete=models.CASCADE)
