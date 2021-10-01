@@ -4,12 +4,12 @@ import { Router, Route, Switch } from "react-router-dom";
 
 import history from "../history";
 import Header from "./layout/Header";
-import OperationDelete from "./technologies/OperationDelete";
-import OperationEdit from "./technologies/OperationEdit";
-import OperationDashboard from "./technologies/OperationDashboard";
-import TechnologieDelete from "./technologies/TechnologieDelete";
-import TechnologieEdit from "./technologies/TechnologieEdit";
-import TechnologieDashboard from "./technologies/TechnologieDashboard";
+import OperationDelete from "./technologies/operation/OperationDelete";
+import OperationEdit from "./technologies/operation/OperationEdit";
+import OperationDashboard from "./technologies/operation/OperationDashboard";
+import TechnologieDelete from "./technologies/technologie/TechnologieDelete";
+import TechnologieEdit from "./technologies/technologie/TechnologieEdit";
+import TechnologieDashboard from "./technologies/technologie/TechnologieDashboard";
 import MainPage from "./technologies/MainPage";
 
 import { Provider } from "react-redux";

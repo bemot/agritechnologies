@@ -1,19 +1,21 @@
 import React, { Component } from "react";
+import { Menu } from "semantic-ui-react";
+import { Dropdown } from "semantic-ui-react";
 
 class Header extends Component {
   render() {
     return (
-      <div className="ui inverted menu" style={{ borderRadius: "0" }}>
-        <a className="header item" href="/">
-          Моделювання технологій
-        </a>
-        <a className="item" href="/technologies">
-          Технології
-        </a>
-        <a className="item" href="/operations">
-          Операції
-        </a>
-      </div>
+      <Menu>
+        <Menu.Item href="/">IAE</Menu.Item>
+        <Menu.Item name="Технології" href="/technologies" />
+        <Menu.Item name="Операції" href="/operations" />
+        <Dropdown item text="Техніка">
+          <Dropdown.Menu>
+            <Dropdown.Item text="Енергозасоби" href="/technics" />
+            <Dropdown.Item text="Машини" href="/technics" />
+          </Dropdown.Menu>
+        </Dropdown>
+      </Menu>
     );
   }
 }
