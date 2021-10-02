@@ -5,7 +5,7 @@ import { Dropdown } from "semantic-ui-react";
 class Header extends Component {
   render() {
     return (
-      <Menu>
+      <Menu inverted>
         <Menu.Item href="/">IAE</Menu.Item>
         <Menu.Item name="Технології" href="/technologies" />
         <Menu.Item name="Операції" href="/operations" />
