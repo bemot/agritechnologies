@@ -3,9 +3,10 @@ from django.urls import path, re_path, include
 
 
 
-from .views import TechnologieViewSet
+from .views import TechnologieViewSet, UnitViewSet
 from .views import OperationViewSet
 from .views import VariableViewSet
+from .views import UnitViewSet
 
 from .views import GalleryViewSet
 from .views import PhotoViewSet
@@ -14,7 +15,8 @@ router = routers.DefaultRouter()
 
 router.register('technologies', TechnologieViewSet, 'technologies')
 router.register('operations', OperationViewSet, 'operations')
-router.register('variables', VariableViewSet)
+router.register('variables', VariableViewSet, 'variables')
+router.register('units', UnitViewSet, 'units')
 
 router.register('gallery', GalleryViewSet,'gallery')
 router.register('photo', PhotoViewSet,'photo')

@@ -18,8 +18,8 @@ urlpatterns = [
     path('variables/edit/<int:pk>', VariableDetailView.as_view()),
     path('variables/delete/<int:pk>', VariableDetailView.as_view()),
     path('units', index),
-    path('units/edit/<int:pk>', VariableDetailView.as_view()),
-    path('units/delete/<int:pk>', VariableDetailView.as_view()),
+    path('units/edit/<int:pk>', UnitDetailView.as_view()),
+    path('units/delete/<int:pk>', UnitDetailView.as_view()),
 
 
 

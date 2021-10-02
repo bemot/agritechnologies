@@ -5,6 +5,7 @@ from rest_framework import serializers
 from technologies.models import Operation
 from technologies.models import Technologie
 from technologies.models import Variable
+from technologies.models import Unit
 
 from photologue.models import Gallery
 from photologue.models import Photo
@@ -23,6 +24,11 @@ class VariableSerializer(serializers.ModelSerializer):
   class Meta:
     model = Variable
     fields = ('id', 'title', 'description', 'created_at','value', 'od_vymiru', 'activated')
+
+class UnitSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Unit
+    fields = ('id', 'title', 'created_at','value')
 
 
 

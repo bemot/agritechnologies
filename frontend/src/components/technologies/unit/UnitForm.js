@@ -55,8 +55,8 @@ const validate = (formValues) => {
   if (!formValues.title) {
     errors.title = "Введіть назву змінної";
   }
-  if (!formValues.description) {
-    errors.description = "Надайте опис змінної";
+  if (!formValues.value) {
+    errors.value = "Надайте коротку назву змінної";
   }
 
   return errors;

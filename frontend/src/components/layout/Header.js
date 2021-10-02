@@ -12,7 +12,7 @@ class Header extends Component {
 
         <Dropdown item text="Змінні">
           <Dropdown.Menu>
-            <Dropdown.Item text="Одиниці виміру" href="/" />
+            <Dropdown.Item text="Одиниці виміру" href="/units" />
             <Dropdown.Item text="Змінні" href="/variables" />
           </Dropdown.Menu>
         </Dropdown>

@@ -17,6 +17,10 @@ import VariableDelete from "./technologies/variable/VariableDelete";
 import VariableEdit from "./technologies/variable/VariableEdit";
 import VariableDashboard from "./technologies/variable/VariableDashboard";
 
+import UnitDelete from "./technologies/unit/UnitDelete";
+import UnitEdit from "./technologies/unit/UnitEdit";
+import UnitDashboard from "./technologies/unit/UnitDashboard";
+
 import MainPage from "./technologies/MainPage";
 
 import { Provider } from "react-redux";
@@ -64,6 +68,10 @@ class App extends Component {
               component={VariableDelete}
             />
             <Route exact path="/variables/edit/:id" component={VariableEdit} />
+
+            <Route exact path="/units" component={UnitDashboard} />
+            <Route exact path="/units/delete/:id" component={UnitDelete} />
+            <Route exact path="/units/edit/:id" component={UnitEdit} />
           </Switch>
         </Router>
       </Provider>

@@ -26,7 +26,7 @@ class UnitList extends Component {
               <Link to={`/units/edit/${unit.id}`} className="header">
                 {unit.title}
               </Link>
-              <div className="description">{unit.description}</div>
+              <div className="Value">{unit.value}</div>
             </div>
           </div>
         ))}
