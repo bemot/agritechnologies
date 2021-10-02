@@ -3,6 +3,8 @@ from django.urls import path
 from .views import index, OperationDetailView
 from .views import index, TechnologieDetailView
 from .views import index, VariableDetailView
+from .views import index, UnitDetailView
+
 
 urlpatterns = [
     path('', index),
@@ -15,6 +17,10 @@ urlpatterns = [
     path('variables', index),
     path('variables/edit/<int:pk>', VariableDetailView.as_view()),
     path('variables/delete/<int:pk>', VariableDetailView.as_view()),
+    path('units', index),
+    path('units/edit/<int:pk>', VariableDetailView.as_view()),
+    path('units/delete/<int:pk>', VariableDetailView.as_view()),
+
 
 
 ]

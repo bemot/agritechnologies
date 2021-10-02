@@ -31,3 +31,12 @@ class Variable(models.Model):
 
   def __str__(self):
     return self.title
+
+# add units
+class Unit(models.Model):
+  title = models.CharField(max_length=255)
+  created_at = models.DateTimeField(auto_now_add=True)
+  value = models.CharField(max_length=15)
+
+  def __str__(self):
+    return self.title
