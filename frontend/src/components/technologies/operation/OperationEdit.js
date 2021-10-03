@@ -24,7 +24,7 @@ class OperationEdit extends Component {
         <OperationForm
           initialValues={_.pick(
             this.props.operation,
-            "technologie_id",
+            "technologie",
             "title",
             "description",
             "activated",

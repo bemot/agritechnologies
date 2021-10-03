@@ -25,9 +25,9 @@ class VariableEdit extends Component {
           initialValues={_.pick(
             this.props.variable,
             "title",
+            "unit",
             "description",
             "value",
-            "od_vymiru",
             "activated"
           )}
           enableReinitialize={true}
@@ -42,6 +42,7 @@ const mapStateToProps = (state, ownProps) => ({
   variable: state.variables[ownProps.match.params.id],
 });
 
-export default connect(mapStateToProps, { getVariable, editVariable })(
-  VariableEdit
-);
+export default connect(mapStateToProps, {
+  getVariable,
+  editVariable,
+})(VariableEdit);

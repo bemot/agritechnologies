@@ -47,7 +47,7 @@ class OperationForm extends Component {
           className="ui form error"
         >
           <label>Technologie</label>
-          <Field name="technologie_id" component="select" label="Technologie">
+          <Field name="technologie" component="select" label="Technologie">
             <option></option>
             {this.props.technologies.map((tech) => (
               <option key={tech.id} value={tech.id}>

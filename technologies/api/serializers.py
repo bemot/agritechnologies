@@ -13,25 +13,22 @@ from photologue.models import Photo
 class OperationSerializer(serializers.ModelSerializer):
   class Meta:
     model = Operation
-    fields = ('id', 'title', 'technologie_id','description', 'created_at','activated', 'completed')
+    fields = ('id', 'title', 'technologie','description', 'created_at','activated', 'completed')
 
 class TechnologieSerializer(serializers.ModelSerializer):
   class Meta:
     model = Technologie
     fields = ('id', 'title', 'description', 'created_at')
 
-class VariableSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = Variable
-    fields = ('id', 'title', 'description', 'created_at','value', 'od_vymiru', 'activated')
-
 class UnitSerializer(serializers.ModelSerializer):
   class Meta:
     model = Unit
     fields = ('id', 'title', 'created_at','value')
 
-
-
+class VariableSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Variable
+    fields = ('id', 'title', 'unit','description', 'created_at','value', 'activated')
 
 class GallerySerializer(serializers.ModelSerializer):
   class Meta:

@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields.related import ForeignKey
 
 class Technologie(models.Model):
     title = models.CharField(max_length=255)
@@ -11,23 +12,11 @@ class Technologie(models.Model):
 # add operation
 class Operation(models.Model):
   title = models.CharField(max_length=255)
-  technologie_id = models.ForeignKey(Technologie, on_delete=models.CASCADE)
+  technologie = models.ForeignKey(Technologie, on_delete=models.CASCADE)
   created_at = models.DateTimeField(auto_now_add=True)
   description = models.TextField()
   activated = models.BooleanField(default=False)
   completed = models.BooleanField(default=False)
-
-  def __str__(self):
-    return self.title
-
-# add Variables
-class Variable(models.Model):
-  title = models.CharField(max_length=255)
-  created_at = models.DateTimeField(auto_now_add=True)
-  description = models.TextField()
-  value = models.FloatField(default=0.0)
-  od_vymiru = models.CharField(max_length=10)
-  activated = models.BooleanField(default=False)
 
   def __str__(self):
     return self.title
@@ -37,6 +26,18 @@ class Unit(models.Model):
   title = models.CharField(max_length=255)
   created_at = models.DateTimeField(auto_now_add=True)
   value = models.CharField(max_length=15)
+
+  def __str__(self):
+    return self.value
+
+# add Variables
+class Variable(models.Model):
+  title = models.CharField(max_length=255)
+  unit = models.ForeignKey(Unit,on_delete=models.CASCADE)
+  created_at = models.DateTimeField(auto_now_add=True)
+  description = models.TextField()
+  value = models.FloatField(default=0.0)
+  activated = models.BooleanField(default=False)
 
   def __str__(self):
     return self.title

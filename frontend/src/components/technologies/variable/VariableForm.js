@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { getUnits } from "../../../actions/units";
 
 class VariableForm extends Component {
   renderField = ({ input, label, meta: { touched, error } }) => {
+    console.log(this.props.units);
     return (
       <div className={`field ${touched && error ? "error" : ""}`}>
         <label>{label}</label>
@@ -27,6 +30,10 @@ class VariableForm extends Component {
     );
   };
 
+  componentDidMount() {
+    this.props.getUnits();
+  }
+
   onSubmit = (formValues) => {
     this.props.onSubmit(formValues);
   };
@@ -45,12 +52,19 @@ class VariableForm extends Component {
             component={this.renderTextArea}
             label="Description"
           />
+
+          <label>Unit</label>
+          <Field name="unit" component="select" label="Unit">
+            <option></option>
+            {this.props.units.map((u) => (
+              <option key={u.id} value={u.id}>
+                {u.title}
+              </option>
+            ))}
+          </Field>
+
           <Field name="value" component={this.renderField} label="Value" />
-          <Field
-            name="od_vymiru"
-            component={this.renderField}
-            label="Одиниця Виміру"
-          />
+
           <Field name="activated" component="select" label="Activated">
             <option value={false}>Не активовано</option>
             <option value={true}>Активовано</option>
@@ -76,8 +90,14 @@ const validate = (formValues) => {
   return errors;
 };
 
-export default reduxForm({
-  form: "variableForm",
-  touchOnBlur: false,
-  validate,
-})(VariableForm);
+const mapStateToProps = (state) => ({
+  units: Object.values(state.units),
+});
+
+export default connect(mapStateToProps, { getUnits })(
+  reduxForm({
+    form: "variableForm",
+    touchOnBlur: false,
+    validate,
+  })(VariableForm)
+);
