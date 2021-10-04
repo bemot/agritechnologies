@@ -1,4 +1,6 @@
 from django.urls import path
+from . import views
+
 
 from .views import index, OperationDetailView
 from .views import index, TechnologieDetailView
@@ -20,6 +22,8 @@ urlpatterns = [
     path('units', index),
     path('units/edit/<int:pk>', UnitDetailView.as_view()),
     path('units/delete/<int:pk>', UnitDetailView.as_view()),
+    path('reports/techs-report',index),
+
 
 
 

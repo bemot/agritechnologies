@@ -13,4 +13,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('photologue/',include('photologue.urls')),
     path('', TemplateView.as_view(template_name="homepage.html"), name='homepage'),
+    path('pictures/', TemplateView.as_view(template_name="homepage.html"), name='pictures'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

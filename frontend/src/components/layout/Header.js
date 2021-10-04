@@ -19,8 +19,18 @@ class Header extends Component {
 
         <Dropdown item text="Техніка">
           <Dropdown.Menu>
-            <Dropdown.Item text="Енергозасоби" href="/technics" />
-            <Dropdown.Item text="Машини" href="/technics" />
+            <Dropdown.Item text="Енергозасоби" href="/" />
+            <Dropdown.Item text="Машини" href="/" />
+          </Dropdown.Menu>
+        </Dropdown>
+
+        <Dropdown item text="Звіти">
+          <Dropdown.Menu>
+            <Dropdown.Item
+              text="Звіт - Список технологій"
+              href="/reports/techs-report"
+            />
+            <Dropdown.Item text="Звіт - список операцій" href="/" />
           </Dropdown.Menu>
         </Dropdown>
       </Menu>

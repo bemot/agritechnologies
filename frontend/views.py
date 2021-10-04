@@ -7,7 +7,6 @@ from technologies.models import Operation
 def index(request):
     return render(request, 'frontend/index.html')
 
-
 class TechnologieDetailView(DetailView):
     model = Technologie
     template_name = 'frontend/index.html'
