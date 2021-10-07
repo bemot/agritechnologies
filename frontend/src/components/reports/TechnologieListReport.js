@@ -12,11 +12,13 @@ class TechnologieListReport extends React.Component {
 
     return (
       <div>
-        <h2>Technologies</h2>
+        <h2>ТЕХНОЛОГІЇ:</h2>
         <ul>
           {this.props.technologies.map((t) => (
             <li key={t.id}>
-              <span>{t.title}</span>
+              <span>
+                {t.id}) {t.title}
+              </span>
               <br />
               <span>{t.description}</span>
             </li>

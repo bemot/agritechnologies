@@ -12,11 +12,13 @@ class OperationListReport extends React.Component {
 
     return (
       <div>
-        <h2>Operations</h2>
+        <h2>ОПЕРАЦІЇ:</h2>
         <ul>
           {this.props.operations.map((o) => (
             <li key={o.id}>
-              <span>{o.title}</span>
+              <span>
+                {o.id}) {o.title}
+              </span>
               <br />
               <span>{o.description}</span>
             </li>
