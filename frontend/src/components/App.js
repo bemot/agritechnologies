@@ -23,6 +23,7 @@ import UnitDashboard from "./technologies/unit/UnitDashboard";
 
 import MainPage from "./technologies/MainPage";
 import TechnologieListReport from "./reports/TechnologieListReport";
+import OperationListReport from "./reports/OperationListReport";
 
 import { Provider } from "react-redux";
 import store from "../store";
@@ -78,6 +79,11 @@ class App extends Component {
               exact
               path="/reports/techs-report"
               component={TechnologieListReport}
+            />
+            <Route
+              exact
+              path="/reports/opers-report"
+              component={OperationListReport}
             />
           </Switch>
         </Router>

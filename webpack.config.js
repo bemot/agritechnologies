@@ -14,6 +14,9 @@ module.exports = {
   },
 
   resolve: {
+    extensions: [".ts", ".js"],
+    fallback: { path: false },
+
     alias: {
       process: "process/browser",
       stream: "stream-browserify",

@@ -23,6 +23,8 @@ urlpatterns = [
     path('units/edit/<int:pk>', UnitDetailView.as_view()),
     path('units/delete/<int:pk>', UnitDetailView.as_view()),
     path('reports/techs-report',index),
+    path('reports/opers-report',index),
+
 
 
 

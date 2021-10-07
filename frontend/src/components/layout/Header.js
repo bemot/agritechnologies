@@ -30,7 +30,10 @@ class Header extends Component {
               text="Звіт - Список технологій"
               href="/reports/techs-report"
             />
-            <Dropdown.Item text="Звіт - список операцій" href="/" />
+            <Dropdown.Item
+              text="Звіт - список операцій"
+              href="/reports/opers-report"
+            />
           </Dropdown.Menu>
         </Dropdown>
       </Menu>
