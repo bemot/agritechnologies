@@ -9,6 +9,7 @@ from technologies.models import Unit
 from technologies.models import PowerUnit
 from technologies.models import Machine
 from technologies.models import Agregat
+from technologies.models import MachineBlock
 
 from photologue.models import Gallery
 from photologue.models import Photo
@@ -56,6 +57,9 @@ class MachineSerializer(serializers.ModelSerializer):
 class AgregatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Agregat
-        fields = ('id', 'title','powerunit','machine')
+        fields = ('id', 'title','powerunit','machine','machineblock')
 
-
+class MachineBlockSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MachineBlock
+        fields = ('id' , 'title', 'quantity')

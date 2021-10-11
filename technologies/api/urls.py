@@ -10,6 +10,7 @@ from .views import UnitViewSet
 from .views import PowerUnitViewSet
 from .views import MachineViewSet
 from .views import AgregatViewSet
+from .views import MachineBlockViewSet 
 
 
 
@@ -25,6 +26,7 @@ router.register('units', UnitViewSet, 'units')
 router.register('power-unite', PowerUnitViewSet,'power-units')
 router.register('machines', MachineViewSet, 'machines')
 router.register('agregates', AgregatViewSet, 'agregates')
+router.register('machineblocks', MachineBlockViewSet,'machineblocks')
 
 router.register('gallery', GalleryViewSet,'gallery')
 router.register('photo', PhotoViewSet,'photo')

@@ -54,16 +54,28 @@ class Machine(models.Model):
     def __str__(self):
         return self.title
 
+# several machines the same type
+class MachineBlock(models.Model):
+    title=models.CharField(max_length=255)
+    machine=models.ForeignKey(Machine, on_delete=models.CASCADE)
+    quantity = models.IntegerField(blank=True, null=True)
+    
+    def __str__(self):
+        return self.title
 
 class Agregat(models.Model):
     title=models.CharField(max_length=255)
     powerunit=models.ForeignKey(PowerUnit, on_delete=models.CASCADE)
     machine = models.ManyToManyField('Machine')
+    machineblock = models.ManyToManyField('MachineBlock')
 
     def get_machines(self):
-        return "\n".join([m.machines for m in self.machine.all()])   
+        return "\n".join([m.machines for m in self.machine.all()])
 
 
+    def get_machineblocks(self):
+        return "\n".join([mb.machineblocks for mb in self.machineblocks.all()])
 
-
+    def __str__(self):
+        return self.title
 
