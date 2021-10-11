@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'rest_framework',  # added
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django.contrib.contenttypes', # bobik for foreign keys one to many
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',

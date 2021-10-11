@@ -6,6 +6,9 @@ from technologies.models import Operation
 from technologies.models import Technologie
 from technologies.models import Variable
 from technologies.models import Unit
+from technologies.models import PowerUnit
+from technologies.models import Machine
+from technologies.models import Agregat
 
 from photologue.models import Gallery
 from photologue.models import Photo
@@ -39,5 +42,20 @@ class PhotoSerializer(serializers.ModelSerializer):
   class Meta:
     model = Photo
     fields = ('title','slug', 'caption','image','admin_thumbnail','cache_url','image_filename')
+
+class PowerUnitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PowerUnit
+        fields = ('id', 'title')
+
+class MachineSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Machine
+        fields = ('id', 'title')
+
+class AgregatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Agregat
+        fields = ('id', 'title','powerunit','machine')
 
 

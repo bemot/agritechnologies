@@ -41,3 +41,29 @@ class Variable(models.Model):
 
   def __str__(self):
     return self.title
+
+class PowerUnit(models.Model):
+    title = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.title
+
+class Machine(models.Model):
+    title=models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.title
+
+
+class Agregat(models.Model):
+    title=models.CharField(max_length=255)
+    powerunit=models.ForeignKey(PowerUnit, on_delete=models.CASCADE)
+    machine = models.ManyToManyField('Machine')
+
+    def get_machines(self):
+        return "\n".join([m.machines for m in self.machine.all()])   
+
+
+
+
+
