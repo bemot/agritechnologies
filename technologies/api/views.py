@@ -10,6 +10,7 @@ from .serializers import PowerUnitSerializer
 from .serializers import MachineSerializer
 from .serializers import AgregatSerializer
 from .serializers import MachineBlockSerializer
+from .serializers import OperationTypeSerializer
 
 from technologies.models import Technologie
 from technologies.models import Operation
@@ -19,6 +20,7 @@ from technologies.models import PowerUnit
 from technologies.models import Machine
 from technologies.models import Agregat
 from technologies.models import MachineBlock
+from technologies.models import OperationType
 
 from photologue.models import Gallery, Photo
 
@@ -62,4 +64,12 @@ class AgregatViewSet(viewsets.ModelViewSet):
 class MachineBlockViewSet(viewsets.ModelViewSet):
     queryset = MachineBlock.objects.all()
     serializer_class = MachineBlockSerializer
+
+class OperationTypeViewSet(viewsets.ModelViewSet):
+    queryset = OperationType.objects.all()
+    serializer_class = OperationTypeSerializer
+
+
+
+
 

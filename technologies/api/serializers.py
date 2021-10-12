@@ -1,4 +1,3 @@
-
 # todo/serializers.py
 
 from rest_framework import serializers
@@ -10,6 +9,7 @@ from technologies.models import PowerUnit
 from technologies.models import Machine
 from technologies.models import Agregat
 from technologies.models import MachineBlock
+from technologies.models import OperationType
 
 from photologue.models import Gallery
 from photologue.models import Photo
@@ -17,7 +17,7 @@ from photologue.models import Photo
 class OperationSerializer(serializers.ModelSerializer):
   class Meta:
     model = Operation
-    fields = ('id', 'title', 'technologie','description', 'created_at','activated', 'completed')
+    fields = ('id', 'title', 'operationtype','technologie','description', 'agregats','created_at','activated', 'completed')
 
 class TechnologieSerializer(serializers.ModelSerializer):
   class Meta:
@@ -63,3 +63,9 @@ class MachineBlockSerializer(serializers.ModelSerializer):
     class Meta:
         model = MachineBlock
         fields = ('id' , 'title', 'quantity')
+
+class OperationTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OperationType
+        fields = ('id', 'title')
+
