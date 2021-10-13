@@ -20,7 +20,8 @@ class VariablesAdmin(admin.ModelAdmin):
 class PowerUnitAdmin(admin.ModelAdmin):
     list_display_list = ('title')
 class MachineAdmin(admin.ModelAdmin):
-    list_display_list=('title')
+    list_display_list=('title', 'image','image_tag')
+
 class AgregatAdmin(admin.ModelAdmin):
     list_display_list=['title','powerunit', 'get_machines']
 class MachineBlockAdmin(admin.ModelAdmin):

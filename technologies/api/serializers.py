@@ -52,7 +52,7 @@ class PowerUnitSerializer(serializers.ModelSerializer):
 class MachineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Machine
-        fields = ('id', 'title')
+        fields = ('id', 'title','image','image_tag')
 
 class AgregatSerializer(serializers.ModelSerializer):
     class Meta:
@@ -62,7 +62,7 @@ class AgregatSerializer(serializers.ModelSerializer):
 class MachineBlockSerializer(serializers.ModelSerializer):
     class Meta:
         model = MachineBlock
-        fields = ('id' , 'title', 'quantity')
+        fields = ('id' , 'title', 'image','machine','quantity')
 
 class OperationTypeSerializer(serializers.ModelSerializer):
     class Meta:
