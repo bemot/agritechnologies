@@ -14,6 +14,50 @@ from technologies.models import OperationType
 from photologue.models import Gallery
 from photologue.models import Photo
 
+class PreviewImageSerializerMixin(serializers.ModelSerializer):
+    preview_image_small = serializers.SerializerMethodField()
+    preview_image_medium = serializers.SerializerMethodField()
+    preview_image_large = serializers.SerializerMethodField()
+    preview_image_raw = serializers.SerializerMethodField()
+
+    def get_preview_image_small(self, obj):
+       request = self.context['request']
+       if request and hasattr(obj, 'preview_image'):
+           image = getattr(obj, 'preview_image')
+           if image is not None:
+               url = image.get_small_url()
+               return request.build_absolute_uri(url)
+       return None
+
+    def get_preview_image_medium(self, obj):
+       request = self.context['request']
+       if request and hasattr(obj, 'preview_image'):
+           image = getattr(obj, 'preview_image')
+           if image is not None:
+               url = image.get_medium_url()
+               return request.build_absolute_uri(url)
+       return None
+
+    def get_preview_image_large(self, obj):
+       request = self.context['request']
+       if request and hasattr(obj, 'preview_image'):
+           image = getattr(obj, 'preview_image')
+           if image is not None:
+               url = image.get_large_url()
+               return request.build_absolute_uri(url)
+       return None
+
+    def get_preview_image_raw(self, obj):
+       request = self.context['request']
+       if request and hasattr(obj, 'preview_image'):
+           image = getattr(obj, 'preview_image')
+           if image is not None:
+               url = image.get_raw_url()
+               return request.build_absolute_uri(url)
+       return None
+
+
+
 class OperationSerializer(serializers.ModelSerializer):
   class Meta:
     model = Operation
@@ -47,12 +91,12 @@ class PhotoSerializer(serializers.ModelSerializer):
 class PowerUnitSerializer(serializers.ModelSerializer):
     class Meta:
         model = PowerUnit
-        fields = ('id', 'title')
+        fields = ('id', 'title','image')
 
 class MachineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Machine
-        fields = ('id', 'title','image','image_tag')
+        fields = ('id', 'title','image')
 
 class AgregatSerializer(serializers.ModelSerializer):
     class Meta:
@@ -62,10 +106,20 @@ class AgregatSerializer(serializers.ModelSerializer):
 class MachineBlockSerializer(serializers.ModelSerializer):
     class Meta:
         model = MachineBlock
-        fields = ('id' , 'title', 'image','machine','quantity')
+        fields = ('id' , 'title', 'machine','quantity')
 
 class OperationTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = OperationType
         fields = ('id', 'title')
+
+class MachinePreviewSerializer(PreviewImageSerializerMixin):
+    """
+    Serializer for Machine instance
+    """
+    class Meta:
+        model = Machine
+        fields = ('id', 'title', 'image',
+                  'preview_image_small', 'preview_image_medium',
+                  'preview_image_large', 'preview_image_raw')
 

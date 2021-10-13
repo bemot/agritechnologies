@@ -11,6 +11,7 @@ from .serializers import MachineSerializer
 from .serializers import AgregatSerializer
 from .serializers import MachineBlockSerializer
 from .serializers import OperationTypeSerializer
+from .serializers import MachinePreviewSerializer
 
 from technologies.models import Technologie
 from technologies.models import Operation
@@ -56,6 +57,10 @@ class PowerUnitViewSet(viewsets.ModelViewSet):
 class MachineViewSet(viewsets.ModelViewSet):
     queryset = Machine.objects.all()
     serializer_class = MachineSerializer
+
+class MachinePreviewSet(viewsets.ModelViewSet):
+    queryset = Machine.objects.all()
+    serializer_class = MachinePreviewSerializer
 
 class AgregatViewSet(viewsets.ModelViewSet):
     queryset = Agregat.objects.all()

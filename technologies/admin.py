@@ -8,6 +8,7 @@ from .models import Machine
 from .models import Agregat
 from .models import MachineBlock
 from .models import OperationType
+from .models import TechnologieList
 
 class TechnologiesAdmin(admin.ModelAdmin):
   list_display = ('title','description','created_at')
@@ -18,16 +19,18 @@ class UnitsAdmin(admin.ModelAdmin):
 class VariablesAdmin(admin.ModelAdmin):
     list_display=('unit','title','description','value', 'activated','created_at')
 class PowerUnitAdmin(admin.ModelAdmin):
-    list_display_list = ('title')
+    list_display = ('title', 'price','weigth','years','image_tag')
 class MachineAdmin(admin.ModelAdmin):
-    list_display_list=('title', 'image','image_tag')
+    list_display=('title','price','weigth','years','image_tag')
 
 class AgregatAdmin(admin.ModelAdmin):
-    list_display_list=['title','powerunit', 'get_machines']
+    list_display=['title','powerunit']
 class MachineBlockAdmin(admin.ModelAdmin):
-    list_display_list=('title','quantity','get_machineblocks')
+    list_display=('title','quantity')
 class OperationTypeAdmin(admin.ModelAdmin):
     list_display_list = ('title')
+class TechnologieListAdmin(admin.ModelAdmin):
+    list_display = ('title','technologie')
 
 
 admin.site.register(Technologie,TechnologiesAdmin)
@@ -39,6 +42,7 @@ admin.site.register(Machine, MachineAdmin)
 admin.site.register(Agregat,AgregatAdmin)
 admin.site.register(MachineBlock, MachineBlockAdmin)
 admin.site.register(OperationType, OperationTypeAdmin)
+admin.site.register(TechnologieList, TechnologieListAdmin)
 
 
 

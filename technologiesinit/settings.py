@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # ...other installed applications...
     'photologue',
     'sortedm2m',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

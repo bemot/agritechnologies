@@ -2,12 +2,14 @@ from django.db import models
 from photologue.models import Photo
 from django.utils.html import mark_safe
 
+# OperationType   
 class OperationType(models.Model):
     title = models.CharField(max_length=40)
 
     def __str__(self):
         return self.title
 
+# Technologie
 class Technologie(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -15,7 +17,6 @@ class Technologie(models.Model):
 
     def __str__(self):
         return self.title
-
 
 # add units
 class Unit(models.Model):
@@ -38,47 +39,50 @@ class Variable(models.Model):
   def __str__(self):
     return self.title
 
+# powerunit
 class PowerUnit(models.Model):
     title = models.CharField(max_length=255)
-    image = models.ForeignKey(
-        'photologue.Photo',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,) 
+    price = models.DecimalField(decimal_places=2,max_digits=15,blank=True,null=True)
+    weigth = models.IntegerField(blank=True, null=True)
+    years = models.IntegerField(blank=True, null=True)
 
+    image = models.ForeignKey(Photo,null=True,blank=True,on_delete=models.SET_NULL,)
+
+    def image_tag(self):
+        return self.image.admin_thumbnail()
 
     def __str__(self):
         return self.title
 
+# machine
 class Machine(models.Model):
-    title=models.CharField(max_length=255)
-    operationtype = models.ManyToManyField(OperationType, blank=True)
-    image = models.ForeignKey(Photo,null=True,blank=True,on_delete=models.SET_NULL,)
+     title=models.CharField(max_length=255)
+     operationtype = models.ManyToManyField(OperationType, blank=True)
+     price = models.DecimalField(decimal_places=2,max_digits=15,blank=True)
+     weigth = models.IntegerField(blank=True)
+     years = models.IntegerField(blank=True)
+     image = models.ForeignKey(Photo,null=True,blank=True,on_delete=models.SET_NULL,)
 
-    def image_tag(self):
-        return mark_safe('<img src="%s" width="100px" height="100px" />'%(self.image.url))
-    image_tag.short_description = 'Image'
-    image_tag.allow_tags = True
+     def image_tag(self):
+        return self.image.admin_thumbnail()
 
-    def get_operationtypes(self):
+     def get_operationtypes(self):
         return "\n".join([ot.operatiotypes for ot in self.operationtype.all()])
- 
-    def __str__(self):
+
+     def __str__(self):
         return self.title
 
 # several machines the same type
 class MachineBlock(models.Model):
     title=models.CharField(max_length=255)
-    operationtype = models.ManyToManyField(OperationType, blank=True)
+    operationtype = models.ForeignKey(OperationType, blank=True, on_delete=models.CASCADE, null=True)
     machine=models.ForeignKey(Machine, on_delete=models.CASCADE,blank=True, null=True)
     quantity = models.IntegerField(blank=True, null=True)
-
-    def get_operationtypes(self):
-        return "\n".join([ot.operatiotypes for ot in self.operationtype.all()])
 
     def __str__(self):
         return self.title
 
+# add agregat
 class Agregat(models.Model):
     title=models.CharField(max_length=255)
     operationtype = models.ManyToManyField(OperationType, blank=True)
@@ -97,7 +101,6 @@ class Agregat(models.Model):
 
     def __str__(self):
         return self.title
-
 
 # add operation
 class Operation(models.Model):
@@ -118,4 +121,21 @@ class Operation(models.Model):
 
   def __str__(self):
     return self.title
+
+
+class TechnologieList(models.Model):
+    technologie = models.ForeignKey(Technologie, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    agregats= models.ManyToManyField(Agregat, blank=True)
+ 
+    def get_agregats(self):
+        return "\n".join([a.operations for a in self.agregat.all()])
+
+
+    def __str__(self):
+        return self.title
+
+
+
+
 
