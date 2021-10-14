@@ -126,6 +126,7 @@ class Operation(models.Model):
 class TechnologieList(models.Model):
     technologie = models.ForeignKey(Technologie, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
+    date = models.DateField(null=True, blank=True)
     agregats= models.ManyToManyField(Agregat, blank=True)
  
     def get_agregats(self):

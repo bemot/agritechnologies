@@ -25,12 +25,15 @@ class MachineAdmin(admin.ModelAdmin):
 
 class AgregatAdmin(admin.ModelAdmin):
     list_display=['title','powerunit']
+    list_filter=['powerunit']
 class MachineBlockAdmin(admin.ModelAdmin):
     list_display=('title','quantity')
+    list_filter=['operationtype']
 class OperationTypeAdmin(admin.ModelAdmin):
     list_display_list = ('title')
 class TechnologieListAdmin(admin.ModelAdmin):
-    list_display = ('title','technologie')
+    list_display = ('title','technologie', 'date')
+    list_filter=['technologie','date']
 
 
 admin.site.register(Technologie,TechnologiesAdmin)
