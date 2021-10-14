@@ -128,7 +128,9 @@ class TechnologieList(models.Model):
     title = models.CharField(max_length=255)
     date = models.DateField(null=True, blank=True)
     agregats= models.ManyToManyField(Agregat, blank=True)
- 
+    activated = models.BooleanField(default=False,blank=True)
+    completed = models.BooleanField(default=False,blank=True)
+
     def get_agregats(self):
         return "\n".join([a.operations for a in self.agregat.all()])
 

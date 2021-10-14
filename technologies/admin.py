@@ -32,8 +32,9 @@ class MachineBlockAdmin(admin.ModelAdmin):
 class OperationTypeAdmin(admin.ModelAdmin):
     list_display_list = ('title')
 class TechnologieListAdmin(admin.ModelAdmin):
-    list_display = ('title','technologie', 'date')
-    list_filter=['technologie','date']
+    list_display = ('title','technologie', 'date','activated')
+    list_filter=['technologie','date','activated']
+    search_fields = ['title']
 
 
 admin.site.register(Technologie,TechnologiesAdmin)
