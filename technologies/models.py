@@ -86,7 +86,7 @@ class MachineBlock(models.Model):
 class Agregat(models.Model):
     title=models.CharField(max_length=255)
     operationtype = models.ManyToManyField(OperationType, blank=True)
-    powerunit=models.ForeignKey(PowerUnit, on_delete=models.CASCADE,blank=True)
+    powerunit=models.ForeignKey(PowerUnit, on_delete=models.SET_NULL,blank=True, null=True)
     machine = models.ManyToManyField('Machine',blank=True)
     machineblock = models.ManyToManyField('MachineBlock', blank=True)
 
