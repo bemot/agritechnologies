@@ -81,12 +81,12 @@ class VariableSerializer(serializers.ModelSerializer):
 class GallerySerializer(serializers.ModelSerializer):
   class Meta:
     model = Gallery
-    fields = ('title', 'slug', 'description','photos','sites')
+    fields = ('id','title', 'slug', 'description','photos','sites')
 
 class PhotoSerializer(serializers.ModelSerializer):
   class Meta:
     model = Photo
-    fields = ('title','slug', 'caption','image','admin_thumbnail','cache_url','image_filename')
+    fields = ('id','title','slug', 'caption','image','admin_thumbnail','cache_url','image_filename')
 
 class PowerUnitSerializer(serializers.ModelSerializer):
     class Meta:
