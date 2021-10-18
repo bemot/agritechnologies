@@ -20,7 +20,7 @@ class Header extends Component {
         <Dropdown item text="Техніка">
           <Dropdown.Menu>
             <Dropdown.Item text="Енергозасоби" href="/" />
-            <Dropdown.Item text="Машини" href="/" />
+            <Dropdown.Item text="Машини" href="/machines" />
           </Dropdown.Menu>
         </Dropdown>
 

@@ -91,12 +91,12 @@ class PhotoSerializer(serializers.ModelSerializer):
 class PowerUnitSerializer(serializers.ModelSerializer):
     class Meta:
         model = PowerUnit
-        fields = ('id', 'title','image')
+        fields = ('id', 'title','price','weight','years','image')
 
 class MachineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Machine
-        fields = ('id', 'title','image')
+        fields = ('id', 'title','price','weight','years','image')
 
 class AgregatSerializer(serializers.ModelSerializer):
     class Meta:

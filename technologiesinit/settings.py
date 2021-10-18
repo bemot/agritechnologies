@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     # ...other installed applications...
     'photologue',
     'sortedm2m',
-    'drf_yasg',
+    'drf_yasg2',
 ]
 
 MIDDLEWARE = [
@@ -213,3 +213,8 @@ CORS_ORIGIN_WHITELIST = (
     'http://127.0.0:8000'
  )
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+
+# У меня та же проблема, но poetry не позволяет мне обновить Markdown с 2.6.11 до 3+ , потому что apache-airflow (1.10.10) зависит от markdown (>=2.5.2,<3.0)
+from rest_framework import compat
+compat.md_filter_add_syntax_highlight = lambda md: False

@@ -43,7 +43,7 @@ class Variable(models.Model):
 class PowerUnit(models.Model):
     title = models.CharField(max_length=255)
     price = models.DecimalField(decimal_places=2,max_digits=15,blank=True,null=True)
-    weigth = models.IntegerField(blank=True, null=True)
+    weight = models.IntegerField(blank=True, null=True)
     years = models.IntegerField(blank=True, null=True)
 
     image = models.ForeignKey(Photo,null=True,blank=True,on_delete=models.SET_NULL,)
@@ -59,8 +59,8 @@ class Machine(models.Model):
      title=models.CharField(max_length=255)
      operationtype = models.ManyToManyField(OperationType, blank=True)
      price = models.DecimalField(decimal_places=2,max_digits=15,blank=True)
-     weigth = models.IntegerField(blank=True)
-     years = models.IntegerField(blank=True)
+     weight = models.IntegerField(blank=True,null=True)
+     years = models.IntegerField(blank=True,null=True)
      image = models.ForeignKey(Photo,null=True,blank=True,on_delete=models.SET_NULL,)
 
      def image_tag(self):

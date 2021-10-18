@@ -19,9 +19,9 @@ class UnitsAdmin(admin.ModelAdmin):
 class VariablesAdmin(admin.ModelAdmin):
     list_display=('unit','title','description','value', 'activated','created_at')
 class PowerUnitAdmin(admin.ModelAdmin):
-    list_display = ('title', 'price','weigth','years','image_tag')
+    list_display = ('title', 'price','weight','years','image_tag')
 class MachineAdmin(admin.ModelAdmin):
-    list_display=('title','price','weigth','years','image_tag')
+    list_display=('title','price','weight','years','image_tag')
 
 class AgregatAdmin(admin.ModelAdmin):
     list_display=['title','powerunit']

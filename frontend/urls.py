@@ -6,7 +6,7 @@ from .views import index, OperationDetailView
 from .views import index, TechnologieDetailView
 from .views import index, VariableDetailView
 from .views import index, UnitDetailView
-
+from .views import index, MachineDetailView
 
 urlpatterns = [
     path('', index),
@@ -22,6 +22,10 @@ urlpatterns = [
     path('units', index),
     path('units/edit/<int:pk>', UnitDetailView.as_view()),
     path('units/delete/<int:pk>', UnitDetailView.as_view()),
+    path('machines', index),
+    path('machines/edit/<int:pk>', MachineDetailView.as_view()),
+    path('machines/delete/<int:pk>', MachineDetailView.as_view()),
+
     path('reports/techs-report',index),
     path('reports/opers-report',index),
 

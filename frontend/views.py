@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic.detail import DetailView
 
 from technologies.models import Technologie, Variable, Unit
-from technologies.models import Operation
+from technologies.models import Operation, Machine
 
 def index(request):
     return render(request, 'frontend/index.html')
@@ -24,4 +24,6 @@ class UnitDetailView(DetailView):
     model = Unit
     template_name = 'frontend/index.html'
 
-   
+class MachineDetailView(DetailView):
+    model= Machine
+    template_name = 'frontend/index.html'
