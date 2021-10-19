@@ -33,7 +33,7 @@ router.register('operationtypes', OperationTypeViewSet, 'operationtypes')
 router.register('machinepreviews', MachinePreviewSet, 'machinepreviews')
 
 router.register('gallery', GalleryViewSet,'gallery')
-router.register('photo', PhotoViewSet,'photo')
+router.register('photos', PhotoViewSet,'photo')
 
 urlpatterns = router.urls
 

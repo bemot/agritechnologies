@@ -27,7 +27,8 @@ class MachineEdit extends Component {
             "title",
             "price",
             "weight",
-            "years"
+            "years",
+            "image"
           )}
           enableReinitialize={true}
           onSubmit={this.onSubmit}

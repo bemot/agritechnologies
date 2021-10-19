@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { getPhotos } from "../../../actions/photos";
 
 class MachineForm extends Component {
   renderField = ({ input, label, meta: { touched, error } }) => {
@@ -27,11 +29,16 @@ class MachineForm extends Component {
     );
   };
 
+  componentDidMount() {
+    this.props.getPhotos();
+  }
+
   onSubmit = (formValues) => {
     this.props.onSubmit(formValues);
   };
 
   render() {
+    //console.log(this.props.photos);
     const btnText = `${this.props.initialValues ? "Update" : "Add"}`;
     return (
       <div className="ui segment">
@@ -43,6 +50,16 @@ class MachineForm extends Component {
           <Field name="price" component={this.renderField} label="Price" />
           <Field name="weight" component={this.renderField} label="Weight" />
           <Field name="years" component={this.renderField} label="Years" />
+
+          <label>Image</label>
+          <Field name="image" component="select" label="Image">
+            <option></option>
+            {this.props.photos.map((photo) => (
+              <option key={photo.id} value={photo.id}>
+                {photo.title}
+              </option>
+            ))}
+          </Field>
 
           <button className="ui primary button">{btnText}</button>
         </form>
@@ -64,8 +81,14 @@ const validate = (formValues) => {
   return errors;
 };
 
-export default reduxForm({
-  form: "machineForm",
-  touchOnBlur: false,
-  validate,
-})(MachineForm);
+const mapStateToProps = (state) => ({
+  photos: Object.values(state.photos),
+});
+
+export default connect(mapStateToProps, { getPhotos })(
+  reduxForm({
+    form: "machineForm",
+    touchOnBlur: false,
+    validate,
+  })(MachineForm)
+);
