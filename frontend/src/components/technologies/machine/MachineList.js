@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getMachines, deleteMachine } from "../../../actions/machines";
 import { getPhotos } from "../../../actions/photos";
 import _ from "lodash";
+import ReactHtmlParser from "react-html-parser";
 
 class MachineList extends Component {
   componentDidMount() {
@@ -11,34 +12,39 @@ class MachineList extends Component {
     this.props.getPhotos();
   }
 
+  pic = [];
+  picobj = {};
+  TakenPicture = ({ picture_id }) => {
+    //console.log(picture_id);
+    //console.log(this.props.photos);
+    this.pic = _.filter(this.props.photos, { id: picture_id });
+    this.picobj = this.pic[0];
+    //console.log(this.picobj["admin_thumbnail"]);
+
+    return <div> {ReactHtmlParser(this.picobj["admin_thumbnail"])}</div>;
+  };
+
   render() {
-    const photo = _.filter(this.props.photos, { id: 2 });
-    //console.log(photo);
     return (
       <div className="ui relaxed divided list" style={{ marginTop: "2rem" }}>
         {this.props.machines.map((machine) => (
           <div className="item" key={machine.id}>
+            <div className="left floated content">
+              <this.TakenPicture picture_id={machine.image} />
+            </div>
+
             <div className="right floated content">
               <Link
                 to={`/machines/delete/${machine.id}`}
-                className="small ui negative basic button"
+                className="big ui negative basic button"
               >
                 Delete
               </Link>
             </div>
-            <i className="large calendar outline middle aligned icon" />
             <div className="content">
               <Link to={`/machines/edit/${machine.id}`} className="header">
                 {machine.title}
               </Link>
-              <div>
-                {photo.map((ph) => (
-                  <div>
-                    <p key={ph.id}>{ph.image}</p>
-                    {ph.admin_thumbnail}
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         ))}
