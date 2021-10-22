@@ -7,19 +7,24 @@ import _ from "lodash";
 import ReactHtmlParser from "react-html-parser";
 
 class MachineList extends Component {
+  getData() {
+    setTimeout(() => {
+      this.props.getPhotos();
+      this.props.getMachines();
+    }, 10);
+  }
   componentDidMount() {
-    this.props.getPhotos();
-    this.props.getMachines();
+    this.getData();
   }
 
   TakenPicture = ({ picture_id }) => {
     var pic = [];
     var picobj = {};
-    console.log(picture_id);
-    console.log(this.props.photos);
+    //console.log(picture_id);
+    //console.log(this.props.photos);
     pic = _.filter(this.props.photos, { id: picture_id });
     picobj = pic[0];
-    console.log(picobj["admin_thumbnail"]);
+    //console.log(picobj["admin_thumbnail"]);
 
     return <div> {ReactHtmlParser(picobj["admin_thumbnail"])}</div>;
   };
