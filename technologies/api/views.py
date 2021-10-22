@@ -13,6 +13,8 @@ from .serializers import AgregatSerializer
 from .serializers import MachineBlockSerializer
 from .serializers import OperationTypeSerializer
 from .serializers import MachinePreviewSerializer
+#from .serializers import PreviewImageSerializerMixin
+
 
 from technologies.models import Technologie
 from technologies.models import Operation
