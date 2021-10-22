@@ -25,6 +25,10 @@ import MachineDelete from "./technologies/machine/MachineDelete";
 import MachineEdit from "./technologies/machine/MachineEdit";
 import MachineDashboard from "./technologies/machine/MachineDashboard";
 
+import PowerunitDelete from "./technologies/powerunit/PowerunitDelete";
+import PowerunitEdit from "./technologies/powerunit/PowerunitEdit";
+import PowerunitDashboard from "./technologies/powerunit/PowerunitDashboard";
+
 import MainPage from "./technologies/MainPage";
 import TechnologieListReport from "./reports/TechnologieListReport";
 import OperationListReport from "./reports/OperationListReport";
@@ -78,6 +82,18 @@ class App extends Component {
             <Route exact path="/units" component={UnitDashboard} />
             <Route exact path="/units/delete/:id" component={UnitDelete} />
             <Route exact path="/units/edit/:id" component={UnitEdit} />
+
+            <Route exact path="/powerunits" component={PowerunitDashboard} />
+            <Route
+              exact
+              path="/powerunits/delete/:id"
+              component={PowerunitDelete}
+            />
+            <Route
+              exact
+              path="/powerunits/edit/:id"
+              component={PowerunitEdit}
+            />
 
             <Route exact path="/machines" component={MachineDashboard} />
             <Route

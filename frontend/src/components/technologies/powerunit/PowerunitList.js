@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getMachines, deleteMachine } from "../../../actions/machines";
+import { getPowerunits, deletePowerunit } from "../../../actions/powerunits";
 import { getPhotos } from "../../../actions/photos";
 import _ from "lodash";
 import ReactHtmlParser from "react-html-parser";
 
-class MachineList extends Component {
+class PowerunitList extends Component {
   componentDidMount() {
     this.props.getPhotos();
-    this.props.getMachines();
+    this.props.getPowerunits();
   }
 
   TakenPicture = ({ picture_id }) => {
@@ -18,6 +18,7 @@ class MachineList extends Component {
     console.log(picture_id);
     console.log(this.props.photos);
     pic = _.filter(this.props.photos, { id: picture_id });
+
     picobj = pic[0];
     console.log(picobj["admin_thumbnail"]);
 
@@ -26,24 +27,24 @@ class MachineList extends Component {
 
   render() {
     return (
-      <div className="ui relaxed divided list" style={{ marginTop: "2rem" }}>
-        {this.props.machines.map((machine) => (
-          <div className="item" key={machine.id}>
+      <div className="ui relaxed divided list" style={{ marginTop: "1rem" }}>
+        {this.props.powerunits.map((powerunit) => (
+          <div className="item" key={powerunit.id}>
             <div className="left floated content">
-              <this.TakenPicture picture_id={machine.image} />
+              <this.TakenPicture picture_id={powerunit.image} />
             </div>
 
             <div className="right floated content">
               <Link
-                to={`/machines/delete/${machine.id}`}
+                to={`/powerunits/delete/${powerunit.id}`}
                 className="big ui negative basic button"
               >
                 Delete
               </Link>
             </div>
             <div className="content">
-              <Link to={`/machines/edit/${machine.id}`} className="header">
-                {machine.title}
+              <Link to={`/powerunits/edit/${powerunit.id}`} className="header">
+                {powerunit.title}
               </Link>
             </div>
           </div>
@@ -55,13 +56,13 @@ class MachineList extends Component {
 
 const mapStateToProps = (state) => ({
   photos: Object.values(state.photos),
-  machines: Object.values(state.machines),
+  powerunits: Object.values(state.powerunits),
 });
 
 export default connect(mapStateToProps, {
   getPhotos,
-  getMachines,
-  deleteMachine,
-})(MachineList);
+  getPowerunits,
+  deletePowerunit,
+})(PowerunitList);
 
 //_.filter(users, { 'age': 36, 'active': true });//var result = _.map(objArray, _.property("foo"));

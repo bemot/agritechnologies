@@ -34,3 +34,9 @@ export const GET_PHOTO = "GET_PHOTO";
 export const ADD_PHOTO = "ADD_PHOTO";
 export const DELETE_PHOTO = "DELETE_PHOTO";
 export const EDIT_PHOTO = "EDIT_PHOTO";
+//photos
+export const GET_POWERUNITS = "GET_POWERUNITS";
+export const GET_POWERUNIT = "GET_POWERUNIT";
+export const ADD_POWERUNIT = "ADD_POWERUNIT";
+export const DELETE_POWERUNIT = "DELETE_POWERUNIT";
+export const EDIT_POWERUNIT = "EDIT_POWERUNIT";

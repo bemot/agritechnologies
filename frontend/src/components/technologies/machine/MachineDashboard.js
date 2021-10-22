@@ -6,6 +6,8 @@ class MachineDashboard extends Component {
   render() {
     return (
       <div className="ui container">
+        <h2 style={{ marginTop: "0.2rem" }}>Машини</h2>
+
         <MachineCreate />
         <MachineList />
       </div>

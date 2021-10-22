@@ -1,13 +1,13 @@
+from technologies.models import PowerUnit
 from django.urls import path
 from . import views
-
 
 from .views import index, OperationDetailView
 from .views import index, TechnologieDetailView
 from .views import index, VariableDetailView
 from .views import index, UnitDetailView
 from .views import index, MachineDetailView
-
+from .views import index, PowerunitDetailView
 urlpatterns = [
     path('', index),
     path('operations', index),
@@ -25,6 +25,9 @@ urlpatterns = [
     path('machines', index),
     path('machines/edit/<int:pk>', MachineDetailView.as_view()),
     path('machines/delete/<int:pk>', MachineDetailView.as_view()),
+    path('powerunits', index),
+    path('powerunits/edit/<int:pk>', PowerunitDetailView.as_view()),
+    path('powerunits/delete/<int:pk>', PowerunitDetailView.as_view()),
 
     path('reports/techs-report',index),
     path('reports/opers-report',index),

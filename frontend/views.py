@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic.detail import DetailView
 
 from technologies.models import Technologie, Variable, Unit
-from technologies.models import Operation, Machine
+from technologies.models import Operation, Machine, PowerUnit
 
 def index(request):
     return render(request, 'frontend/index.html')
@@ -26,4 +26,8 @@ class UnitDetailView(DetailView):
 
 class MachineDetailView(DetailView):
     model= Machine
+    template_name = 'frontend/index.html'
+
+class PowerunitDetailView(DetailView):
+    model= PowerUnit
     template_name = 'frontend/index.html'
