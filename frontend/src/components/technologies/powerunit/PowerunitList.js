@@ -11,7 +11,7 @@ class PowerunitList extends Component {
     setTimeout(() => {
       this.props.getPhotos();
       this.props.getPowerunits();
-    }, 10);
+    }, 60);
   }
   componentDidMount() {
     this.getData();

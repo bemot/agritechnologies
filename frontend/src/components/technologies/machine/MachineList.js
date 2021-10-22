@@ -11,7 +11,7 @@ class MachineList extends Component {
     setTimeout(() => {
       this.props.getPhotos();
       this.props.getMachines();
-    }, 10);
+    }, 60);
   }
   componentDidMount() {
     this.getData();

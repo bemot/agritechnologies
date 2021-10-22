@@ -6,7 +6,9 @@ class Header extends Component {
   render() {
     return (
       <Menu inverted stackable>
-        <Menu.Item href="/">IAE</Menu.Item>
+        <Menu.Item>
+          <img src="https://react.semantic-ui.com/logo.png" />
+        </Menu.Item>
         <Menu.Item name="Технології" href="/technologies" />
         <Menu.Item name="Операції" href="/operations" />
 
