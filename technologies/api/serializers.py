@@ -2,6 +2,7 @@
 
 from rest_framework import serializers
 from technologies.models import Operation
+from technologies.models import TechnologieList
 from technologies.models import Technologie
 from technologies.models import Variable
 from technologies.models import Unit
@@ -123,3 +124,7 @@ class MachinePreviewSerializer(PreviewImageSerializerMixin):
                   'preview_image_small', 'preview_image_medium',
                   'preview_image_large', 'preview_image_raw')
 
+class TechnologieListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TechnologieList
+        fields = ('id','technologie' ,'title', 'date', 'agregats','activated','completed')

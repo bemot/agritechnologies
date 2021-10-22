@@ -2,6 +2,7 @@ from rest_framework import viewsets
 
 from .serializers import TechnologieSerializer
 from .serializers import OperationSerializer
+from .serializers import TechnologieListSerializer
 from .serializers import GallerySerializer
 from .serializers import PhotoSerializer
 from .serializers import VariableSerializer
@@ -22,12 +23,18 @@ from technologies.models import Machine
 from technologies.models import Agregat
 from technologies.models import MachineBlock
 from technologies.models import OperationType
+from technologies.models import TechnologieList
 
 from photologue.models import Gallery, Photo
 
 class TechnologieViewSet(viewsets.ModelViewSet):
     queryset = Technologie.objects.all()
     serializer_class = TechnologieSerializer
+
+class TechnologieListViewSet(viewsets.ModelViewSet):
+    queryset = TechnologieList.objects.all()
+    serializer_class = TechnologieListSerializer
+
 
 class OperationViewSet(viewsets.ModelViewSet):
     queryset = Operation.objects.all()
