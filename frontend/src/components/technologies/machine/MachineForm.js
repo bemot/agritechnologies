@@ -46,10 +46,26 @@ class MachineForm extends Component {
           onSubmit={this.props.handleSubmit(this.onSubmit)}
           className="ui form error"
         >
-          <Field name="title" component={this.renderField} label="Title" />
-          <Field name="price" component={this.renderField} label="Price" />
-          <Field name="weight" component={this.renderField} label="Weight" />
-          <Field name="years" component={this.renderField} label="Years" />
+          <Field
+            name="title"
+            component={this.renderField}
+            label="Назва машини"
+          />
+          <Field
+            name="price"
+            component={this.renderField}
+            label="Ціна машини: грн"
+          />
+          <Field
+            name="weight"
+            component={this.renderField}
+            label="Ваша машини: кг"
+          />
+          <Field
+            name="years"
+            component={this.renderField}
+            label="Вік машини: роки"
+          />
 
           <label>Image</label>
           <Field name="image" component="select" label="Image">
