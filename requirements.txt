@@ -3,7 +3,7 @@ beautifulsoup4==4.6.0
 bitchute-dl==1.0.6
 certifi==2021.5.30
 chardet==3.0.4
-Django==2.0.8
+Django<=2.2.0
 django-filter==2.0.0
 django-modelcluster==4.2
 django-taggit==0.23.0
@@ -33,9 +33,10 @@ six==1.11.0
 solc-select==0.2.1
 Unidecode==1.0.22
 urllib3==1.23
-wagtail==2.3
+wagtail
 webencodings==0.5.1
 whitenoise==4.1
 Willow==1.1
 youtube-dl==2021.4.1
 django-photologue
+drf-yasg
