@@ -29,6 +29,10 @@ import PowerunitDelete from "./technologies/powerunit/PowerunitDelete";
 import PowerunitEdit from "./technologies/powerunit/PowerunitEdit";
 import PowerunitDashboard from "./technologies/powerunit/PowerunitDashboard";
 
+import PhotoDelete from "./technologies/photo/PhotoDelete";
+import PhotoEdit from "./technologies/photo/PhotoEdit";
+import PhotoDashboard from "./technologies/photo/PhotoDashboard";
+
 import MainPage from "./technologies/MainPage";
 import TechnologieListReport from "./reports/TechnologieListReport";
 import OperationListReport from "./reports/OperationListReport";
@@ -82,6 +86,10 @@ class App extends Component {
             <Route exact path="/units" component={UnitDashboard} />
             <Route exact path="/units/delete/:id" component={UnitDelete} />
             <Route exact path="/units/edit/:id" component={UnitEdit} />
+
+            <Route exact path="/photos" component={PhotoDashboard} />
+            <Route exact path="/photos/delete/:id" component={PhotoDelete} />
+            <Route exact path="/photos/edit/:id" component={PhotoEdit} />
 
             <Route exact path="/powerunits" component={PowerunitDashboard} />
             <Route

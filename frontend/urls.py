@@ -8,6 +8,7 @@ from .views import index, VariableDetailView
 from .views import index, UnitDetailView
 from .views import index, MachineDetailView
 from .views import index, PowerunitDetailView
+from .views import index, PhotoDetailView
 urlpatterns = [
     path('', index),
     path('operations', index),
@@ -28,6 +29,11 @@ urlpatterns = [
     path('powerunits', index),
     path('powerunits/edit/<int:pk>', PowerunitDetailView.as_view()),
     path('powerunits/delete/<int:pk>', PowerunitDetailView.as_view()),
+
+    path('photos', index),
+    path('photos/edit/<int:pk>', PhotoDetailView.as_view()),
+    path('photos/delete/<int:pk>', PhotoDetailView.as_view()),
+
 
     path('reports/techs-report',index),
     path('reports/opers-report',index),

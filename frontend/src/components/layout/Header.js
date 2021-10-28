@@ -26,6 +26,8 @@ class Header extends Component {
           </Dropdown.Menu>
         </Dropdown>
 
+        <Menu.Item name="Photos" href="/photos" />
+
         <Dropdown item text="Звіти">
           <Dropdown.Menu>
             <Dropdown.Item
