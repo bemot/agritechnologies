@@ -22,7 +22,13 @@ class PhotoEdit extends Component {
       <div className="ui container">
         <h2 style={{ marginTop: "2rem" }}>Edit Photo</h2>
         <PhotoForm
-          initialValues={_.pick(this.props.photo, "title", "value")}
+          initialValues={_.pick(
+            this.props.photo,
+            "title" || "",
+            "slug" || "",
+            "caption" || "",
+            "image" || ""
+          )}
           enableReinitialize={true}
           onSubmit={this.onSubmit}
         />
