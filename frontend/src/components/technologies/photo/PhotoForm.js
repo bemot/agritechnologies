@@ -1,17 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
-import Dropzone from "react-dropzone";
-import request from "superagent";
 
 class PhotoForm extends Component {
-  onDrop(file) {
-    var req = request.post("http://localhost:8000/api/image/").send(file);
-    req.end(function (err, response) {
-      console.log(file);
-      console.log("upload done!!!!!");
-    });
-  }
-
   renderField = ({ input, label, meta: { touched, error } }) => {
     return (
       <div className={`field ${touched && error ? "error" : ""}`}>
@@ -38,7 +28,7 @@ class PhotoForm extends Component {
   };
 
   onSubmit = (formValues) => {
-    console.log(formValues);
+    console.log("from formValues", formValues);
     this.props.onSubmit(formValues);
   };
 
@@ -53,20 +43,6 @@ class PhotoForm extends Component {
           <Field name="title" component={this.renderField} label="Title" />
           <Field name="slug" component={this.renderField} label="Slug" />
           <Field name="caption" component={this.renderField} label="Caption" />
-          <div>
-            <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)}>
-              {({ getRootProps, getInputProps }) => (
-                <section>
-                  <div {...getRootProps()}>
-                    <input {...getInputProps()} />
-                    <p>
-                      Drag 'n' drop some file here, or click to select files
-                    </p>
-                  </div>
-                </section>
-              )}
-            </Dropzone>
-          </div>
 
           <button className="ui primary button">{btnText}</button>
         </form>

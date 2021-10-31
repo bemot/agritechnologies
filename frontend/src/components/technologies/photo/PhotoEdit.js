@@ -26,8 +26,7 @@ class PhotoEdit extends Component {
             this.props.photo,
             "title" || "",
             "slug" || "",
-            "caption" || "",
-            "image" || ""
+            "caption" || ""
           )}
           enableReinitialize={true}
           onSubmit={this.onSubmit}
