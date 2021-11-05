@@ -3,6 +3,11 @@ const webpack = require("webpack");
 module.exports = {
   module: {
     rules: [
+      { test: /.css$/, loader: "css-loader" },
+      {
+        test: /.*\.svg$/,
+        loader: "svg-inline-loader",
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
