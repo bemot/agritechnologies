@@ -3,7 +3,6 @@ import { Field, reduxForm } from "redux-form";
 import ImageUploader from "react-images-upload";
 
 class PhotoForm extends Component {
-  image = {};
   renderField = ({ input, label, meta: { touched, error } }) => {
     return (
       <div className={`field ${touched && error ? "error" : ""}`}>
@@ -16,29 +15,36 @@ class PhotoForm extends Component {
     );
   };
 
-  onSubmit = ({ title, slug, caption }) => {
-    //console.log(title, "  ", slug, "  ", caption);
+ refreshPage() {
+    window.location.reload(false);
+  }
+
+
+
+  onSubmit = (formValues) => {
+    //console.log(formValues);
     //console.log("here 1", this.state.image);
 
     //console.log("here 1", pictureFiles);
-    let formValues = new FormData();
+    //let formdata = new FormData();
 
-    formValues.append("title", title);
-    formValues.append("slug", slug);
-    formValues.append("caption", caption);
-    formValues.append("image", this.state.image);
+    //formdata.append("title", formValues.title);
+    //formdata.append("slug", formValues.slug);
+    //formdata.append("caption", formValues.caption);
+    //formdata.append("image", this.state.image);
 
     //axios.post(`http://localhost:8000/api/photos/`, form_data).then((res) => {
     //  console.log(res);
     //  console.log(res.data);
     // calling parrent function onSubmit (bobik)
-    this.props.onSubmit(formValues);
+    this.props.onSubmit(formValues, this.state.image);
+
   };
 
   onDrop = (pictureFiles, pictureDataURLs) => {
     //console.log("here 2", pictureFiles);
     this.setState({
-      image: pictureFiles,
+      image: pictureFiles[0],
     });
   };
 
@@ -71,12 +77,11 @@ class PhotoForm extends Component {
 
 const validate = (formValues) => {
   const errors = {};
-
   if (!formValues.title) {
     errors.title = "Введіть назву змінної";
   }
-  if (!formValues.value) {
-    errors.value = "Надайте коротку назву змінної";
+  if (!formValues.slug) {
+    errors.slug = "Надайте коротку назву змінної";
   }
 
   return errors;

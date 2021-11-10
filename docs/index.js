@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ImageUploader from "react-images-upload";
 import axios from "axios";
-
+import axios from "axios";
 class App extends React.Component {
   constructor(props) {
     super(props);

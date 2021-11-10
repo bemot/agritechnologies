@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Agritechnologies pictures - {% block title %}{% endblock title %}</title>
+    <title>Сільське господарство в фотографіях - {% block title %}{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -15,31 +15,31 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Agritechnologies pictures</a>
+      <a class="navbar-brand" href="/"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item nav_home">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/">Головна</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Gallery views
+                        Галереї
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{% url 'photologue:pl-gallery-archive' %}">Date views</a>
-                        <a class="dropdown-item" href="{% url 'photologue:gallery-list' %}">List views</a>
+                        <a class="dropdown-item" href="{% url 'photologue:pl-gallery-archive' %}">По датах</a>
+                        <a class="dropdown-item" href="{% url 'photologue:gallery-list' %}">Список</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Photo views
+                        Фото
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{% url 'photologue:pl-photo-archive' %}">Date views</a>
-                        <a class="dropdown-item" href="{% url 'photologue:photo-list' %}">List views</a>
+                        <a class="dropdown-item" href="{% url 'photologue:pl-photo-archive' %}">По датах</a>
+                        <a class="dropdown-item" href="{% url 'photologue:photo-list' %}">Список</a>
                     </div>
                 </li>
             </ul>

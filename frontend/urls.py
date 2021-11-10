@@ -9,8 +9,12 @@ from .views import index, UnitDetailView
 from .views import index, MachineDetailView
 from .views import index, PowerunitDetailView
 from .views import index, PhotoDetailView
+
+
+
 urlpatterns = [
     path('', index),
+
     path('operations', index),
     path('operations/edit/<int:pk>', OperationDetailView.as_view()),
     path('operations/delete/<int:pk>', OperationDetailView.as_view()),

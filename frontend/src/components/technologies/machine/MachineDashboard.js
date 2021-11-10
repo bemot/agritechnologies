@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import MachineCreate from "./MachineCreate";
-import MachineList from "./MachineList";
+import MachineList from "./MachineList"
 
 class MachineDashboard extends Component {
+
   render() {
     return (
       <div className="ui container">

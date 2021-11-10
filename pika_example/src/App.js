@@ -3,7 +3,9 @@ import React, { Component } from "react";
 import axios from "axios";
 
 const refreshPage = () => {
-  window.location.reload();
+
+  window.location.reload()
+
 };
 
 class App extends Component {

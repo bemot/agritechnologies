@@ -4,8 +4,11 @@ import { addMachine } from "../../../actions/machines";
 import MachineForm from "./MachineForm";
 
 class MachineCreate extends Component {
+
   onSubmit = (formValues) => {
+
     this.props.addMachine(formValues);
+
   };
 
   render() {

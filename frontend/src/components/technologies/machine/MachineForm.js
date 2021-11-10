@@ -51,16 +51,19 @@ class MachineForm extends Component {
             component={this.renderField}
             label="Назва машини"
           />
+
           <Field
             name="price"
             component={this.renderField}
             label="Ціна машини: грн"
           />
+
           <Field
             name="weight"
             component={this.renderField}
             label="Ваша машини: кг"
           />
+
           <Field
             name="years"
             component={this.renderField}

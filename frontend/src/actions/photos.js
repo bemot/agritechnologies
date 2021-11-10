@@ -35,6 +35,7 @@ export const addPhoto = (formValues) => async (dispatch) => {
     payload: res.data,
   });
   dispatch(reset("PhotoForm")); // フォーム送信後、値をクリアする
+  dispatch(reset("PhotoForm"));
 };
 
 // DELETE PHOTO
