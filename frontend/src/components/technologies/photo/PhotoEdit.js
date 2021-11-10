@@ -24,9 +24,13 @@ class PhotoEdit extends Component {
         <PhotoForm
           initialValues={_.pick(
             this.props.photo,
+
             "title" || "",
             "slug" || "",
-            "caption" || ""
+            "caption" || "",
+            "image" || "",
+            "admin_thumbnail" || "",
+
           )}
           enableReinitialize={true}
           onSubmit={this.onSubmit}

@@ -8,7 +8,7 @@ class PhotoList extends Component {
   getData() {
     setTimeout(() => {
       this.props.getPhotos();
-    }, 60);
+    }, 20);
   }
   componentDidMount() {
     this.getData();

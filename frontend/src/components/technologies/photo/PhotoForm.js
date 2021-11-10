@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import ImageUploader from "react-images-upload";
+import _ from "lodash";
+import ReactHtmlParser from "react-html-parser";
 
 class PhotoForm extends Component {
   renderField = ({ input, label, meta: { touched, error } }) => {
@@ -15,11 +17,37 @@ class PhotoForm extends Component {
     );
   };
 
- refreshPage() {
+  refreshPage() {
     window.location.reload(false);
   }
 
+  onDrop = (pictureFiles, pictureDataURLs) => {
+    //console.log("here 2", pictureFiles);
+    this.setState({
+      image: pictureFiles[0],
+    });
+  };
 
+
+  showPhoto = () => {
+    if (this.props.initialValues)
+      return (
+    <div>
+       {ReactHtmlParser(this.props.initialValues.admin_thumbnail)}
+    </div>
+      );
+    else
+      return (
+        <ImageUploader
+          withIcon={true}
+          withPreview={false}
+          buttonText="Choose images"
+          onChange={this.onDrop}
+          imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
+          maxFileSize={5242880}
+        />
+      );
+  };
 
   onSubmit = (formValues) => {
     //console.log(formValues);
@@ -37,16 +65,10 @@ class PhotoForm extends Component {
     //  console.log(res);
     //  console.log(res.data);
     // calling parrent function onSubmit (bobik)
-    this.props.onSubmit(formValues, this.state.image);
-
+    if (this.props.initialValues) this.props.onSubmit(formValues)
+    else this.props.onSubmit(formValues, this.state.image);
   };
 
-  onDrop = (pictureFiles, pictureDataURLs) => {
-    //console.log("here 2", pictureFiles);
-    this.setState({
-      image: pictureFiles[0],
-    });
-  };
 
   render() {
     const btnText = `${this.props.initialValues ? "Update" : "Add"}`;
@@ -59,14 +81,8 @@ class PhotoForm extends Component {
           <Field name="title" component={this.renderField} label="Title" />
           <Field name="slug" component={this.renderField} label="Slug" />
           <Field name="caption" component={this.renderField} label="Caption" />
-          <ImageUploader
-            withIcon={true}
-            withPreview={false}
-            buttonText="Choose images"
-            onChange={this.onDrop}
-            imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
-            maxFileSize={5242880}
-          />
+
+          <this.showPhoto />
 
           <button className="ui primary button">{btnText}</button>
         </form>
