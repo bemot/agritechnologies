@@ -16,7 +16,7 @@ export const getTechnologies = () => async (dispatch) => {
     type: GET_TECHNOLOGIES,
     payload: res.data,
   });
-};
+}
 
 // GET TECHNOLOGIE
 export const getTechnologie = (id) => async (dispatch) => {

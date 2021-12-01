@@ -21,27 +21,26 @@ class PhotoForm extends Component {
     window.location.reload(false);
   }
 
-  onDrop = (pictureFiles, pictureDataURLs) => {
+  onDrop = (pictureFiles) => {
     //console.log("here 2", pictureFiles);
     this.setState({
       image: pictureFiles[0],
     });
   };
 
-
   showPhoto = () => {
     if (this.props.initialValues)
       return (
-    <div>
-       {ReactHtmlParser(this.props.initialValues.admin_thumbnail)}
-    </div>
+        <div>{ReactHtmlParser(this.props.initialValues.admin_thumbnail)}</div>
       );
     else
       return (
         <ImageUploader
-          withIcon={true}
+          withIcon={false}
+          singleImage={true}
           withPreview={false}
-          buttonText="Choose images"
+          withLabel={false}
+          buttonText={"Вибрати картинку"}
           onChange={this.onDrop}
           imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
           maxFileSize={5242880}
@@ -65,10 +64,9 @@ class PhotoForm extends Component {
     //  console.log(res);
     //  console.log(res.data);
     // calling parrent function onSubmit (bobik)
-    if (this.props.initialValues) this.props.onSubmit(formValues)
+    if (this.props.initialValues) this.props.onSubmit(formValues);
     else this.props.onSubmit(formValues, this.state.image);
   };
-
 
   render() {
     const btnText = `${this.props.initialValues ? "Update" : "Add"}`;

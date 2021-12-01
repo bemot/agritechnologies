@@ -38,6 +38,7 @@ urlpatterns = [
     path('photos/edit/<int:pk>', PhotoDetailView.as_view()),
     path('photos/delete/<int:pk>', PhotoDetailView.as_view()),
 
+    path('simplephoto', index),
 
     path('reports/techs-report',index),
     path('reports/opers-report',index),

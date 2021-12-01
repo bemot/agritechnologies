@@ -28,7 +28,6 @@ python-xlib==0.29
 pytz==2018.5
 react-ssr==0.1.8
 requests==2.20.0
-screenkey==1.4
 six==1.11.0
 solc-select==0.2.1
 Unidecode==1.0.22

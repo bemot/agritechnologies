@@ -28,7 +28,6 @@ class PhotoEdit extends Component {
             "title" || "",
             "slug" || "",
             "caption" || "",
-            "image" || "",
             "admin_thumbnail" || "",
 
           )}

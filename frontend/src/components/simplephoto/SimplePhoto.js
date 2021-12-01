@@ -3,12 +3,10 @@ import React, { Component } from "react";
 import axios from "axios";
 
 const refreshPage = () => {
-
-  window.location.reload()
-
+  window.location.reload();
 };
 
-class App extends Component {
+class SimplePhoto extends Component {
   constructor() {
     super();
     this.state = {
@@ -189,4 +187,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default SimplePhoto;

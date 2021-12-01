@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Router, Route, Switch } from "react-router-dom";
-
 import history from "../history";
 import Header from "./layout/Header";
 
@@ -36,6 +35,8 @@ import PhotoDashboard from "./technologies/photo/PhotoDashboard";
 import MainPage from "./technologies/MainPage";
 import TechnologieListReport from "./reports/TechnologieListReport";
 import OperationListReport from "./reports/OperationListReport";
+
+import SimplePhoto from "./simplephoto/SimplePhoto";
 
 import { Provider } from "react-redux";
 import store from "../store";
@@ -121,6 +122,7 @@ class App extends Component {
               path="/reports/opers-report"
               component={OperationListReport}
             />
+            <Route exact path="/simplephoto" component={SimplePhoto} />
           </Switch>
         </Router>
       </Provider>
