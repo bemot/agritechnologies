@@ -105,7 +105,7 @@ class SimplePhoto extends Component {
           <button
             type="button"
             onClick={handleModal}
-            className="w3-button w3-round w3-display-topright"
+            className="w3-button w3-yellow w3-round w3-display-topright"
           >
             X
           </button>
@@ -162,7 +162,7 @@ class SimplePhoto extends Component {
                 className="w3-image w3-hover-grayscale w3-round"
               />
             </a>
-            <div className="w3-display-topmiddle w3-text-white">
+            <div className="w3-display-topmiddle w3-text-red">
               <h4>{data.title}</h4>
             </div>
             <p className="w3-justify w3-text-gray w3-padding">{data.title}</p>
@@ -177,9 +177,9 @@ class SimplePhoto extends Component {
           <button
             type="button"
             onClick={this.handleModal}
-            className="w3-button w3-bar-item"
+            className="w3-button w3-bar-item w3-teal w3-border w3-round"
           >
-            <h4>Внести картинку в базу даних</h4>
+            Внести картинку в базу даних
           </button>
         </nav>
 
