@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import axios from "axios";
 
 const refreshPage = () => {
@@ -17,10 +16,22 @@ class SimplePhoto extends Component {
       },
       show: false,
       Data: [],
+      selectedFileName: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
+    this.makeRandomSlug = this.makeRandomSlug.bind(this);
+  }
+
+  makeRandomSlug(len) {
+    let s = "";
+    while (s.length < len)
+      s += Math.random()
+        .toString(36)
+        .substr(2, len - s.length);
+    //console.log(s);
+    return s;
   }
 
   refreshList = () => {
@@ -43,14 +54,14 @@ class SimplePhoto extends Component {
   handleImageChange(e) {
     const data = this.state.info;
     data.image = e.target.files[0];
+    this.selectedFileName = e.target.files[0].name;
     this.setState({ info: data });
   }
 
   handleSubmit = () => {
-    let form_data = new FormData();
-    console.log(this.state.info.title);
+    this.state.info.slug = "slug_" + this.makeRandomSlug(15);
     console.log(this.state.info.slug);
-
+    let form_data = new FormData();
     form_data.append("title", this.state.info.title);
     form_data.append("slug", this.state.info.slug);
     form_data.append("image", this.state.info.image);
@@ -58,7 +69,7 @@ class SimplePhoto extends Component {
     axios
       .post("http://localhost:8000/api/photos/", form_data)
       .then(() => {
-        console.log("Uploaded");
+        //console.log("Uploaded");
         this.setState({
           info: {
             title: "",
@@ -66,6 +77,7 @@ class SimplePhoto extends Component {
             image: null,
           },
           show: true,
+          selectedFileName: null,
         });
       })
       .catch((err) => console.log(err));
@@ -80,6 +92,10 @@ class SimplePhoto extends Component {
 
   UploadImageModal = ({ show, handleModal }) => {
     const showHideClassName = show ? "w3-modal w3-show" : "w3-modal";
+    const btnImage = `${
+      this.selectedFileName ? this.selectedFileName : "Додати картинку"
+    }`;
+
     return (
       <div className={showHideClassName}>
         <div
@@ -93,22 +109,13 @@ class SimplePhoto extends Component {
           >
             X
           </button>
-          <h2 className="w3-center">Upload Image</h2>
+          <h2 className="w3-center">Завантажити картинку</h2>
           <form>
             <input
               type="text"
               name="title"
               value={this.state.info.title}
-              placeholder="Enter image title"
-              onChange={this.handleChange}
-              className="w3-input w3-border w3-round w3-margin-bottom"
-            />
-
-            <input
-              type="text"
-              name="slug"
-              value={this.state.info.slug}
-              placeholder="Enter slug for image"
+              placeholder="Внесіть назву для картинки"
               onChange={this.handleChange}
               className="w3-input w3-border w3-round w3-margin-bottom"
             />
@@ -117,7 +124,7 @@ class SimplePhoto extends Component {
               htmlFor="imgholder"
               className="w3-button w3-green w3-block w3-round w3-margin-bottom w3-card"
             >
-              Add Image
+              {btnImage}
             </label>
             <input
               id="imgholder"
@@ -131,7 +138,7 @@ class SimplePhoto extends Component {
               onClick={this.handleSubmit}
               className="w3-button w3-blue w3-round w3-card"
             >
-              Submit
+              Ввід
             </button>
           </form>
         </div>
@@ -172,7 +179,7 @@ class SimplePhoto extends Component {
             onClick={this.handleModal}
             className="w3-button w3-bar-item"
           >
-            Upload
+            <h4>Внести картинку в базу даних</h4>
           </button>
         </nav>
 
