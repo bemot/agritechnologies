@@ -94,7 +94,7 @@ PyWavelets==1.0.3
 pyzmq==19.0.2
 ranger==0.10
 react-ssr==0.1.8
-reportlab==3.5.23
+reportlab==3.5.55
 requests==2.20.0
 ruffus==2.8.1
 scikit-image==0.15.0
