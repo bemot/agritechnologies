@@ -80,7 +80,7 @@ ptyprocess==0.6.0
 pycparser==2.19
 pycryptodome==3.8.2
 Pygments==2.7.0
-PyJWT==1.6.4
+PyJWT==2.4.0
 pynvim==0.3.2
 pyparsing==2.4.0
 PyPDF2==1.26.0
